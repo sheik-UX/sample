@@ -14,7 +14,18 @@ export default function ScrubTextReveal() {
 
     if (!textRef.current || !containerRef.current) return;
 
-    const words = textRef.current.querySelectorAll('.scrub-word');
+    const words = textRef.current.querySelectorAll<HTMLElement>('.scrub-word');
+
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      words.forEach((w) => {
+        w.style.opacity = '1';
+      });
+      return;
+    }
 
     const ctx = gsap.context(() => {
       gsap.fromTo(

@@ -117,6 +117,8 @@ export default function Testimonials() {
                 <img
                   src={current.avatar}
                   alt={current.author}
+                  loading="lazy"
+                  decoding="async"
                   className="w-14 h-14 rounded-full object-cover border border-neutral-200"
                 />
                 <div>

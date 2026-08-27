@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import {
   Sparkles,
   ArrowUpRight,
@@ -18,7 +18,33 @@ export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const offsetRef = useRef<number>(0);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const isHeroInViewRef = useRef<boolean>(true);
+  const isMobileRef = useRef<boolean>(false);
   const prefersReducedMotion = useReducedMotion();
+
+  // Passive viewport and responsive checks to avoid layout thrashing during animation loop
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isHeroInViewRef.current = entry.isIntersecting;
+      },
+      { threshold: 0 }
+    );
+    observer.observe(el);
+
+    const checkMobile = () => {
+      isMobileRef.current = window.innerWidth < 640;
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
 
   // The 7 canonical Hero Cards, styled with Sentinel design tokens
   const baseCards = [
@@ -345,11 +371,11 @@ export default function Hero() {
     };
   };
 
-  // Continuous smooth 3D gallery animation loop
+  // Continuous smooth 3D gallery animation loop - GPU optimized and viewport gated
   useAnimationFrame((time, delta) => {
-    if (prefersReducedMotion) return;
+    if (prefersReducedMotion || !isHeroInViewRef.current) return;
 
-    const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
+    const isMobile = isMobileRef.current;
     const slotWidth = isMobile ? 220 : 265;
     const cycleWidth = 7 * slotWidth;
     const maxDist = isMobile ? 440 : 760;
@@ -360,6 +386,10 @@ export default function Hero() {
 
     const totalCount = cardInstances.length;
     const halfTotal = (totalCount * slotWidth) / 2;
+
+    // On mobile, use gentler 3D rotation and depth to prevent frame drops on mobile GPUs
+    const maxRotateY = isMobile ? 8.5 : 13.5;
+    const maxDepth = isMobile ? 28 : 45;
 
     cardRefs.current.forEach((el, index) => {
       if (!el) return;
@@ -374,18 +404,26 @@ export default function Hero() {
       const normX = Math.max(-1.15, Math.min(1.15, relX / maxDist));
       const absNorm = Math.abs(normX);
 
-      // 3D Transforms:
-      // Subtle rotateY: -13.5deg to +13.5deg
-      const rotateY = normX * 13.5;
-
-      // translateZ: recedes smoothly towards the edges (0 to -45px, never positive towards camera)
-      const translateZ = -Math.pow(Math.min(1, absNorm), 1.4) * 45;
-
-      // scale: strictly constrained between 0.95 and 1.0 (no huge card)
-      const scale = 1 - Math.pow(Math.min(1, absNorm), 1.5) * 0.05;
-
       // Edge opacity falloff
       const opacity = Math.max(0, 1 - Math.pow(absNorm, 3) * 0.9);
+
+      // CULL OFFSCREEN: If card is fully faded out at edge, hide completely and skip matrix interpolation
+      if (opacity <= 0.01) {
+        if (el.style.visibility !== 'hidden') {
+          el.style.visibility = 'hidden';
+          el.style.opacity = '0';
+        }
+        return;
+      }
+
+      if (el.style.visibility !== 'visible') {
+        el.style.visibility = 'visible';
+      }
+
+      // GPU-friendly 3D transforms only (translate3d, rotateY, scale)
+      const rotateY = normX * maxRotateY;
+      const translateZ = -Math.pow(Math.min(1, absNorm), 1.4) * maxDepth;
+      const scale = 1 - Math.pow(Math.min(1, absNorm), 1.5) * 0.05;
 
       el.style.transform = `translate3d(calc(${relX}px - 50%), -50%, ${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`;
       el.style.opacity = `${opacity}`;

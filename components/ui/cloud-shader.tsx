@@ -294,12 +294,19 @@ export const CloudShader = ({
 
     let frame = 0;
     let running = true;
+    let isVisible = true;
+    let lastDrawTime = 0;
+    const targetInterval = 1000 / 30; // 30 FPS throttle: smooth drift, 50% less GPU usage
+
     const reduceMotion =
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
+      // Cap DPR to 1.0 on mobile and 1.25 on desktop: soft ambient clouds look identical, saves 60-75% shader fill
+      const maxDpr = isMobile ? 1.0 : 1.25;
+      const dpr = Math.min(window.devicePixelRatio || 1, maxDpr);
       const width = canvas.clientWidth;
       const height = canvas.clientHeight;
       const w = Math.max(1, Math.floor(width * dpr));
@@ -312,13 +319,35 @@ export const CloudShader = ({
       gl.uniform2f(loc.res, w, h);
     };
 
-    const observer = new ResizeObserver(resize);
-    observer.observe(canvas);
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(canvas);
     resize();
+
+    // Pause WebGL rendering loop when canvas is scrolled off-screen
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => {
+        const wasVisible = isVisible;
+        isVisible = entry.isIntersecting;
+        if (!wasVisible && isVisible && running && !reduceMotion) {
+          lastDrawTime = performance.now();
+          frame = requestAnimationFrame(draw);
+        }
+      },
+      { threshold: 0 }
+    );
+    visibilityObserver.observe(canvas);
 
     const start = performance.now();
     const draw = (now: number) => {
-      if (!running) return;
+      if (!running || !isVisible) return;
+
+      // Throttle draw calls to targetInterval (~30fps) for significant GPU power savings
+      if (now - lastDrawTime < targetInterval) {
+        frame = requestAnimationFrame(draw);
+        return;
+      }
+      lastDrawTime = now;
+
       const p = paramsRef.current;
       const elapsed = reduceMotion ? 0 : ((now - start) / 1000) * p.speed;
       const cloud = parseHex(p.cloudColor);
@@ -331,15 +360,20 @@ export const CloudShader = ({
       gl.uniform3f(loc.skyTop, skyTop[0], skyTop[1], skyTop[2]);
       gl.uniform3f(loc.skyBottom, skyBottom[0], skyBottom[1], skyBottom[2]);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
-      frame = requestAnimationFrame(draw);
+
+      if (!reduceMotion) {
+        frame = requestAnimationFrame(draw);
+      }
     };
 
+    // Initial render frame
     frame = requestAnimationFrame(draw);
 
     return () => {
       running = false;
       cancelAnimationFrame(frame);
-      observer.disconnect();
+      resizeObserver.disconnect();
+      visibilityObserver.disconnect();
       gl.deleteBuffer(buffer);
       gl.deleteProgram(program);
       gl.deleteShader(vert);

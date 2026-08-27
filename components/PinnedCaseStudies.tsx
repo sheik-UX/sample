@@ -72,6 +72,8 @@ export default function PinnedCaseStudies() {
             <img
               src="/assets/workflow_cluster.jpg"
               alt="Enterprise workflow cluster and telemetry dashboard"
+              loading="lazy"
+              decoding="async"
               className="w-full h-52 object-cover"
             />
             <div className="p-3 bg-[#F4F4F5] border-t border-[#E5E7EB] flex items-center justify-between text-[11px] font-mono text-[#4B5563]">

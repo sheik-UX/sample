@@ -44,6 +44,8 @@ export default function BentoGrid() {
                 <img
                   src="/assets/product_assets.jpg"
                   alt="Refined product assets and design system tokens"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-56 sm:h-72 lg:h-80 object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
               </IllustrationReveal>
@@ -85,6 +87,8 @@ export default function BentoGrid() {
                 <img
                   src="/assets/frameworks_nodes.jpg"
                   alt="Software frameworks and modular code nodes"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-48 sm:h-60 object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
               </IllustrationReveal>
@@ -126,6 +130,8 @@ export default function BentoGrid() {
                 <img
                   src="/assets/inter_typography.jpg"
                   alt="Inter Sans typographic specimen and alignment"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-48 sm:h-60 object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
               </IllustrationReveal>
@@ -167,6 +173,8 @@ export default function BentoGrid() {
                 <img
                   src="/assets/pipeline_engine.jpg"
                   alt="Sub-second data execution and automated pipeline stream"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-56 sm:h-72 lg:h-80 object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
               </IllustrationReveal>

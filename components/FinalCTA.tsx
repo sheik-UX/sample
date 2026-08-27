@@ -36,6 +36,8 @@ export default function FinalCTA() {
             <img
               src="/assets/smart_outcomes.jpg"
               alt="Automated smart workflows connecting directly into clear operational outcomes"
+              loading="lazy"
+              decoding="async"
               className="w-full h-64 sm:h-80 object-cover"
             />
           </IllustrationReveal>
