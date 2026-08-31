@@ -11,7 +11,8 @@ import {
   Check,
   Zap,
 } from 'lucide-react';
-import { ScrollReveal } from './animations';
+import { ScrollReveal as SectionReveal } from './animations';
+import { ScrollReveal } from '@/components/lightswind/scroll-reveal';
 
 export default function UseCases() {
   const [activeTab, setActiveTab] = useState(0);
@@ -90,24 +91,35 @@ export default function UseCases() {
     <section id="use-cases" className="relative py-14 sm:py-18 md:py-22 px-4 sm:px-6 bg-[#FDFDFD] border-t border-[#E5E7EB] overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <ScrollReveal className="max-w-3xl mb-10 sm:mb-12">
+        <SectionReveal className="max-w-3xl mb-10 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F4F4F5] border border-[#E5E7EB] text-xs font-mono font-semibold text-[#4B5563] mb-4 shadow-xs">
             <Sparkles size={13} className="text-[#FF5722] fill-[#FF5722]" />
             <span>Cross-Functional Impact // Department Blueprints</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-medium tracking-tight text-[#111827] leading-[1.06] mb-4">
-            Automate work across your entire organization.
+            <ScrollReveal
+              size="lg"
+              align="left"
+              enableBlur={true}
+              baseOpacity={0.1}
+              baseRotation={2}
+              blurStrength={3}
+              staggerDelay={0.035}
+              threshold={0.5}
+            >
+              Automate work across your entire organization.
+            </ScrollReveal>
           </h2>
 
-          <p className="font-serif text-lg sm:text-xl text-[#4B5563] font-normal leading-[1.65]">
+          <p className="text-base sm:text-lg text-[#4B5563] font-normal leading-relaxed">
             PaperFlow adapts to your unique operational topology, providing tailored automation
             blueprints for every department from engineering to financial operations.
           </p>
-        </ScrollReveal>
+        </SectionReveal>
 
         {/* Department Switcher Tabs */}
-        <ScrollReveal delay={0.08} className="mb-8">
+        <SectionReveal delay={0.08} className="mb-8">
           <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-[12px] bg-[#F4F4F5] border border-[#E5E7EB] max-w-2xl">
             {cases.map((item, idx) => {
               const TabIcon = item.icon;
@@ -128,10 +140,10 @@ export default function UseCases() {
               );
             })}
           </div>
-        </ScrollReveal>
+        </SectionReveal>
 
         {/* Active Department Deep Showcase */}
-        <ScrollReveal delay={0.12}>
+        <SectionReveal delay={0.12}>
           <div className="rounded-[16px] bg-white border border-[#E5E7EB] p-6 sm:p-10 shadow-xs">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               {/* Left Details (5 cols) */}
@@ -149,7 +161,7 @@ export default function UseCases() {
                   {current.summary}
                 </h3>
 
-                <p className="font-serif text-sm sm:text-base text-[#4B5563] font-normal leading-relaxed">
+                <p className="text-sm sm:text-base text-[#4B5563] font-normal leading-relaxed">
                   {current.details}
                 </p>
 
@@ -206,7 +218,7 @@ export default function UseCases() {
               </div>
             </div>
           </div>
-        </ScrollReveal>
+        </SectionReveal>
       </div>
     </section>
   );

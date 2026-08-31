@@ -13,7 +13,8 @@ import {
   Minus,
   Plus,
 } from 'lucide-react';
-import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/animations';
+import { ScrollReveal as SectionReveal, StaggerContainer, StaggerItem } from '@/components/animations';
+import { ScrollReveal } from '@/components/lightswind/scroll-reveal';
 
 export default function PlansPricingContent() {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('annual');
@@ -32,107 +33,105 @@ export default function PlansPricingContent() {
         'Up to 10 active smart workflows',
         '5,000 automated tasks per month',
         'Standard data transformer nodes',
+        'Email support (24h SLA)',
         'Basic webhook triggers',
-        'Community & email support',
-        '7-day execution logs retention',
+        'Community templates library',
       ],
     },
     {
-      name: 'Growth',
-      subtitle: 'For growing teams that need more automation, speed, and integrations.',
+      name: 'Growth (Pro)',
+      subtitle: 'For scaling teams executing mission-critical operational processes.',
       priceMonthly: 89,
       priceAnnual: 69,
       popular: true,
-      ctaText: 'Get Started with Growth',
+      badge: 'RECOMMENDED FOR TEAMS',
+      ctaText: 'Get Started with Pro',
       ctaVariant: 'primary',
       features: [
         'Unlimited active smart workflows',
         '100,000 automated tasks per month',
-        'Sub-40ms real-time execution engine',
+        'Sub-second real-time transformer nodes',
         'Custom Webhooks & REST API access',
-        'Team collaboration & role management',
+        'Team collaboration & role permissions',
         'Priority Slack & 4-hour SLA support',
-        'Audit logs & 90-day retention',
+        'Audit logs & compliance exports',
+        'Custom domain webhooks',
       ],
     },
     {
-      name: 'Scale',
-      subtitle: 'For organizations running mission-critical complex operational workflows.',
+      name: 'Scale (Enterprise)',
+      subtitle: 'For enterprises demanding custom compute, private VPC, and strict compliance.',
       priceMonthly: 289,
       priceAnnual: 229,
       popular: false,
-      ctaText: 'Contact Enterprise',
+      ctaText: 'Contact Architecture Team',
       ctaVariant: 'secondary',
       features: [
-        'Dedicated multi-region cluster',
-        'Custom / uncapped task volume',
-        'Sub-15ms dedicated edge runtime',
-        'Custom enterprise bus & Kafka streams',
-        'Dedicated solutions architect (1h SLA)',
-        'SOC2 Type II compliance reports',
-        'Unlimited retention & VPC deployment',
+        'Dedicated sub-second execution engine',
+        'Uncapped custom monthly task volume',
+        'Custom webhooks & private VPC bus',
+        'SOC2 Type II & HIPAA compliance reports',
+        'Dedicated platform architect',
+        '1-hour critical incident SLA',
+        'Custom integrations development',
+        '99.99% uptime guarantee',
       ],
     },
   ];
 
   const comparisonRows = [
     { feature: 'Active Workflows', starter: '10', growth: 'Unlimited', scale: 'Unlimited' },
-    { feature: 'Monthly Task Volume', starter: '5,000', growth: '100,000', scale: 'Uncapped Custom' },
-    { feature: 'Execution Speed', starter: 'Standard (250ms)', growth: 'Sub-40ms Edge', scale: 'Dedicated Sub-15ms' },
-    { feature: 'Webhook & CDC Connectors', starter: 'Standard', growth: 'Advanced Multi-Hop', scale: 'Custom Event Bus' },
-    { feature: 'Team Seats', starter: 'Up to 3', growth: 'Up to 25 included', scale: 'Unlimited' },
-    { feature: 'Data & Log Retention', starter: '7 Days', growth: '90 Days', scale: 'Unlimited / Custom' },
+    { feature: 'Monthly Task Volume', starter: '5,000', growth: '100,000', scale: 'Custom / Uncapped' },
+    { feature: 'Execution Cycle Latency', starter: 'Standard (250ms)', growth: 'Sub-40ms Edge', scale: 'Dedicated Sub-15ms' },
+    { feature: 'Webhook Architecture', starter: 'Basic Single-Trigger', growth: 'Advanced Multi-Hop', scale: 'Custom Enterprise Bus' },
+    { feature: 'Team Seats', starter: 'Up to 3 seats', growth: 'Up to 25 included', scale: 'Unlimited seats' },
+    { feature: 'Audit & Compliance', starter: '30-day logs', growth: '1-year logs + export', scale: 'Custom retention + SOC2' },
     { feature: 'Support Level', starter: 'Email (24h)', growth: 'Priority Slack (4h)', scale: 'Dedicated Architect (1h)' },
-    { feature: 'Security & Compliance', starter: 'Standard SSL', growth: 'RBAC & Audit Trail', scale: 'SOC2 Type II & SSO' },
   ];
 
   const includedCategories = [
     {
       icon: Zap,
-      title: 'Workflow Orchestration Engine',
-      description:
-        'Declarative visual pipeline editor, automated retry backoff, exception handling nodes, and conditional execution trees.',
+      title: 'Sub-Second Execution',
+      description: 'Edge-native runtime engine processing workflow DAGs with deterministic low latency.',
     },
     {
       icon: Database,
-      title: 'Data & Change Data Capture (CDC)',
-      description:
-        'Bi-directional synchronization across PostgreSQL, Snowflake, Stripe, and webhook payloads with zero egress penalties.',
-    },
-    {
-      icon: Layers,
-      title: 'Observability & Live Telemetry',
-      description:
-        'Continuous throughput heatmaps, p95/p99 latency tracking, automated drop alerts, and complete execution payload inspection.',
+      title: 'Real-Time Data CDC',
+      description: 'Bi-directional change data capture for PostgreSQL, Stripe, GitHub, and REST APIs.',
     },
     {
       icon: ShieldCheck,
-      title: 'Security & Enterprise Governance',
-      description:
-        'Audited SOC2 Type II compliance, end-to-end envelope encryption, automated API token rotation, and private VPC deployment options.',
+      title: 'Enterprise Security',
+      description: 'End-to-end encrypted payloads, role-based access control, and audited compliance logs.',
+    },
+    {
+      icon: Layers,
+      title: 'Modular Node Patterns',
+      description: 'Pre-built interface tokens, conditional routing gates, and custom JavaScript transform nodes.',
     },
   ];
 
   const faqs = [
     {
-      q: 'Can I change my plan or billing cycle anytime?',
-      a: 'Yes. You can upgrade, downgrade, or switch between monthly and annual billing at any time from your account settings. Prorated credits are automatically applied.',
+      q: 'Can I switch between plans at any time?',
+      a: 'Yes, you can upgrade, downgrade, or change your billing cycle at any point. Upgrades take effect immediately with prorated billing, while downgrades take effect at the end of the current billing cycle.',
     },
     {
-      q: 'How are monthly tasks counted?',
-      a: 'A task is counted each time an automated workflow node completes an action (such as executing a data transformer, triggering a webhook, or making a database update). Ingest triggers that filter out events do not consume task credits.',
-    },
-    {
-      q: 'What happens if we exceed our monthly task limit?',
-      a: 'We never shut down mission-critical workflows unexpectedly. If you approach your limit, you receive proactive alerts, and tasks continue running with a nominal overage rate or a one-click tier upgrade.',
-    },
-    {
-      q: 'Do you offer custom enterprise security agreements or BAA?',
-      a: 'Yes. Scale and Enterprise customers receive custom Service Level Agreements (99.99% uptime), custom Data Processing Agreements (DPA), Business Associate Agreements (BAA), and dedicated private VPC hosting.',
+      q: 'What happens if our team exceeds monthly task volume?',
+      a: 'We never pause or drop production workflows. If you exceed your plan tier, additional tasks are billed at a predictable nominal rate, or you can seamlessly upgrade to the next tier without operational interruption.',
     },
     {
       q: 'Is there a free trial available?',
-      a: 'Yes. Every new account receives a 14-day free trial of the Growth plan with full platform access and 10,000 complimentary task runs. No credit card is required to begin.',
+      a: 'Yes! We offer a 14-day full-access trial for our Growth (Pro) plan with no credit card required upfront. You can test live database connections, build multi-hop workflows, and evaluate latency.',
+    },
+    {
+      q: 'How does enterprise VPC peering work?',
+      a: 'Scale Enterprise plans can be deployed within your private AWS, GCP, or Azure Virtual Private Cloud (VPC) with dedicated NAT gateways and isolated database subnet access.',
+    },
+    {
+      q: 'What payment methods do you support?',
+      a: 'We accept all major credit cards via Stripe, as well as ACH bank transfers, wire transfers, and custom annual PO invoicing for Enterprise contracts.',
     },
   ];
 
@@ -140,17 +139,28 @@ export default function PlansPricingContent() {
     <div className="w-full bg-[#FDFDFD] overflow-hidden">
       {/* 1. Hero Section */}
       <section className="relative pt-16 pb-20 md:pt-24 md:pb-28 px-4 sm:px-6 max-w-7xl mx-auto text-center">
-        <ScrollReveal>
+        <SectionReveal>
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F4F5] border border-[#E5E7EB] text-xs font-mono font-semibold text-[#4B5563] mb-6 shadow-xs">
             <Sparkles size={13} className="text-[#FF5722] fill-[#FF5722]" />
             <span>Plans & Pricing // Scale & Clarity</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-medium tracking-tight text-[#111827] leading-[1.08] max-w-4xl mx-auto mb-6">
-            Plans designed for <span className="text-[#FF5722]">scale and clarity.</span>
+            <ScrollReveal
+              size="xl"
+              align="center"
+              enableBlur={true}
+              baseOpacity={0.1}
+              baseRotation={2}
+              blurStrength={3}
+              staggerDelay={0.04}
+              threshold={0.5}
+            >
+              Plans designed for <span className="text-[#FF5722]">scale and clarity.</span>
+            </ScrollReveal>
           </h1>
 
-          <p className="font-serif text-base sm:text-lg text-[#4B5563] font-normal leading-relaxed max-w-2xl mx-auto mb-10">
+          <p className="text-base sm:text-lg text-[#4B5563] font-normal leading-relaxed max-w-2xl mx-auto mb-10">
             Choose a plan based on your workflow and operational needs. Transparent subscription
             models with sub-second execution, enterprise security, and prorated billing.
           </p>
@@ -185,7 +195,7 @@ export default function PlansPricingContent() {
               </span>
             </button>
           </div>
-        </ScrollReveal>
+        </SectionReveal>
       </section>
 
       {/* 2. Pricing Cards Grid with Stagger */}
@@ -266,19 +276,30 @@ export default function PlansPricingContent() {
 
       {/* 3. Compare Features Table */}
       <section className="py-20 px-4 sm:px-6 max-w-7xl mx-auto border-t border-[#E5E7EB]">
-        <ScrollReveal className="text-center max-w-3xl mx-auto mb-14">
+        <SectionReveal className="text-center max-w-3xl mx-auto mb-14">
           <div className="text-xs font-mono font-semibold uppercase tracking-wider text-[#FF5722] mb-2">
             DETAILED BREAKDOWN
           </div>
           <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-[#111827]">
-            Compare features across plans
+            <ScrollReveal
+              size="lg"
+              align="center"
+              enableBlur={true}
+              baseOpacity={0.1}
+              baseRotation={2}
+              blurStrength={3}
+              staggerDelay={0.035}
+              threshold={0.5}
+            >
+              Compare features across plans
+            </ScrollReveal>
           </h2>
-          <p className="font-serif text-sm sm:text-base text-[#4B5563] mt-2">
+          <p className="text-sm sm:text-base text-[#4B5563] mt-2">
             Every specification you need to make an informed architectural decision.
           </p>
-        </ScrollReveal>
+        </SectionReveal>
 
-        <ScrollReveal delay={0.1}>
+        <SectionReveal delay={0.1}>
           <div className="rounded-[16px] border border-[#E5E7EB] bg-white overflow-hidden shadow-xs">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs sm:text-sm">
@@ -303,22 +324,33 @@ export default function PlansPricingContent() {
               </table>
             </div>
           </div>
-        </ScrollReveal>
+        </SectionReveal>
       </section>
 
       {/* 4. What's Included Categories with Stagger */}
       <section className="py-20 px-4 sm:px-6 max-w-7xl mx-auto border-t border-[#E5E7EB]">
-        <ScrollReveal className="max-w-3xl mb-14">
+        <SectionReveal className="max-w-3xl mb-14">
           <div className="text-xs font-mono font-semibold uppercase tracking-wider text-[#FF5722] mb-2">
             CORE FOUNDATION
           </div>
           <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-[#111827]">
-            What&apos;s included in every PaperFlow deployment
+            <ScrollReveal
+              size="lg"
+              align="left"
+              enableBlur={true}
+              baseOpacity={0.1}
+              baseRotation={2}
+              blurStrength={3}
+              staggerDelay={0.035}
+              threshold={0.5}
+            >
+              What&apos;s included in every PaperFlow deployment
+            </ScrollReveal>
           </h2>
-          <p className="font-serif text-sm sm:text-base text-[#4B5563] mt-2 leading-relaxed">
+          <p className="text-sm sm:text-base text-[#4B5563] mt-2 leading-relaxed">
             Regardless of your plan size, you inherit our resilient infrastructure foundations.
           </p>
-        </ScrollReveal>
+        </SectionReveal>
 
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {includedCategories.map((cat, idx) => {
@@ -345,14 +377,25 @@ export default function PlansPricingContent() {
 
       {/* 5. Pricing Frequently Asked Questions with Stagger */}
       <section className="py-20 px-4 sm:px-6 max-w-4xl mx-auto border-t border-[#E5E7EB]">
-        <ScrollReveal className="text-center mb-12">
+        <SectionReveal className="text-center mb-12">
           <div className="text-xs font-mono font-semibold uppercase tracking-wider text-[#FF5722] mb-2">
             BILLING CLARITY
           </div>
           <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-[#111827]">
-            Pricing questions answered
+            <ScrollReveal
+              size="lg"
+              align="center"
+              enableBlur={true}
+              baseOpacity={0.1}
+              baseRotation={2}
+              blurStrength={3}
+              staggerDelay={0.035}
+              threshold={0.5}
+            >
+              Pricing questions answered
+            </ScrollReveal>
           </h2>
-        </ScrollReveal>
+        </SectionReveal>
 
         <StaggerContainer className="space-y-3.5">
           {faqs.map((faq, idx) => {
@@ -376,7 +419,7 @@ export default function PlansPricingContent() {
                     </div>
                   </button>
                   {isOpen && (
-                    <div className="px-5 sm:px-6 pb-5 pt-1 font-serif text-sm text-[#4B5563] font-normal leading-relaxed border-t border-[#E5E7EB]/60">
+                    <div className="px-5 sm:px-6 pb-5 pt-1 text-sm text-[#4B5563] font-normal leading-relaxed border-t border-[#E5E7EB]/60">
                       {faq.a}
                     </div>
                   )}
@@ -389,17 +432,28 @@ export default function PlansPricingContent() {
 
       {/* 6. Final CTA */}
       <section className="py-20 px-4 sm:px-6 max-w-5xl mx-auto border-t border-[#E5E7EB] text-center">
-        <ScrollReveal className="rounded-[16px] border border-[#E5E7EB] bg-[#F4F4F5] p-8 sm:p-14 shadow-xs relative overflow-hidden">
+        <SectionReveal className="rounded-[16px] border border-[#E5E7EB] bg-[#F4F4F5] p-8 sm:p-14 shadow-xs relative overflow-hidden">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E5E7EB] text-xs font-mono font-semibold text-[#FF5722] mb-4">
             <Sparkles size={13} className="fill-[#FF5722]" />
             <span>Instant Deployment</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-medium tracking-tight text-[#111827] leading-tight mb-4 max-w-2xl mx-auto">
-            Start automating workflows in minutes.
+            <ScrollReveal
+              size="lg"
+              align="center"
+              enableBlur={true}
+              baseOpacity={0.1}
+              baseRotation={2}
+              blurStrength={3}
+              staggerDelay={0.035}
+              threshold={0.5}
+            >
+              Start automating workflows in minutes.
+            </ScrollReveal>
           </h2>
 
-          <p className="font-serif text-base sm:text-lg text-[#4B5563] max-w-xl mx-auto mb-8 leading-relaxed">
+          <p className="text-base sm:text-lg text-[#4B5563] max-w-xl mx-auto mb-8 leading-relaxed">
             Begin your 14-day free trial on Growth tier. Connect your databases, configure your rule
             nodes, and watch execution latency drop to sub-40ms.
           </p>
@@ -416,7 +470,7 @@ export default function PlansPricingContent() {
               Back to Home
             </Link>
           </div>
-        </ScrollReveal>
+        </SectionReveal>
       </section>
     </div>
   );

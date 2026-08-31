@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { Sparkles, ArrowRight, Check } from 'lucide-react';
-import { ScrollReveal } from './animations';
+import { ScrollReveal as SectionReveal } from './animations';
+import { ScrollReveal } from '@/components/lightswind/scroll-reveal';
 
 export default function HowItWorks() {
   const steps = [
@@ -75,24 +76,35 @@ export default function HowItWorks() {
     <section id="how-it-works" className="relative py-14 sm:py-18 md:py-22 px-4 sm:px-6 bg-[#FDFDFD] border-t border-[#E5E7EB] overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <ScrollReveal className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+        <SectionReveal className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F4F4F5] border border-[#E5E7EB] text-xs font-mono font-semibold text-[#4B5563] mb-4 shadow-xs">
             <Sparkles size={13} className="text-[#FF5722] fill-[#FF5722]" />
             <span>Three-Step Orchestration</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-medium tracking-tight text-[#111827] leading-[1.06] mb-4">
-            From idea to automated workflow.
+            <ScrollReveal
+              size="lg"
+              align="center"
+              enableBlur={true}
+              baseOpacity={0.1}
+              baseRotation={2}
+              blurStrength={3}
+              staggerDelay={0.035}
+              threshold={0.5}
+            >
+              From idea to automated workflow.
+            </ScrollReveal>
           </h2>
 
-          <p className="font-serif text-lg sm:text-xl text-[#4B5563] font-normal leading-[1.65]">
+          <p className="text-base sm:text-lg text-[#4B5563] font-normal leading-relaxed">
             Eliminate complex orchestration overhead. Build, connect, and automate your company&apos;s
             most critical operational pipelines in minutes.
           </p>
-        </ScrollReveal>
+        </SectionReveal>
 
         {/* Connected Pipeline Sequence with Interconnecting Directional Flow */}
-        <ScrollReveal delay={0.1}>
+        <SectionReveal delay={0.1}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
             {steps.map((item, idx) => (
               <div
@@ -127,7 +139,7 @@ export default function HowItWorks() {
                     {item.action}
                   </p>
 
-                  <p className="font-serif text-xs sm:text-sm text-[#4B5563] font-normal leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#4B5563] font-normal leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -141,7 +153,7 @@ export default function HowItWorks() {
               </div>
             ))}
           </div>
-        </ScrollReveal>
+        </SectionReveal>
       </div>
     </section>
   );

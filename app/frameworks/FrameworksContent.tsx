@@ -12,7 +12,8 @@ import {
   ArrowRight,
   Layers,
 } from 'lucide-react';
-import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/animations';
+import { ScrollReveal as SectionReveal, StaggerContainer, StaggerItem } from '@/components/animations';
+import { ScrollReveal } from '@/components/lightswind/scroll-reveal';
 
 export default function FrameworksContent() {
   const frameworks = [
@@ -111,17 +112,28 @@ export default function FrameworksContent() {
     <div className="w-full bg-[#FDFDFD] overflow-hidden">
       {/* 1. Hero Section */}
       <section className="relative pt-16 pb-16 md:pt-24 md:pb-24 px-4 sm:px-6 max-w-7xl mx-auto text-center">
-        <ScrollReveal>
+        <SectionReveal>
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F4F5] border border-[#E5E7EB] text-xs font-mono font-semibold text-[#4B5563] mb-6 shadow-xs">
             <Sparkles size={13} className="text-[#FF5722] fill-[#FF5722]" />
             <span>Architectural Blueprints // Engine Spec</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-medium tracking-tight text-[#111827] leading-[1.08] max-w-4xl mx-auto mb-6">
-            Frameworks for <span className="text-[#FF5722]">powerful workflows.</span>
+            <ScrollReveal
+              size="xl"
+              align="center"
+              enableBlur={true}
+              baseOpacity={0.1}
+              baseRotation={2}
+              blurStrength={3}
+              staggerDelay={0.04}
+              threshold={0.5}
+            >
+              Frameworks for <span className="text-[#FF5722]">powerful workflows.</span>
+            </ScrollReveal>
           </h1>
 
-          <p className="font-serif text-base sm:text-lg text-[#4B5563] font-normal leading-relaxed max-w-2xl mx-auto mb-10">
+          <p className="text-base sm:text-lg text-[#4B5563] font-normal leading-relaxed max-w-2xl mx-auto mb-10">
             PaperFlow provides structured foundations and modular execution engines for building
             reliable, high-throughput operational workflows without fragile custom glue code.
           </p>
@@ -141,7 +153,7 @@ export default function FrameworksContent() {
               Deploy Blueprint
             </Link>
           </div>
-        </ScrollReveal>
+        </SectionReveal>
       </section>
 
       {/* 2. Framework Cards Section with Stagger */}
@@ -166,7 +178,7 @@ export default function FrameworksContent() {
                       {fw.title}
                     </h3>
 
-                    <p className="font-serif text-xs sm:text-sm text-[#4B5563] font-normal leading-relaxed mb-6">
+                    <p className="text-xs sm:text-sm text-[#4B5563] font-normal leading-relaxed mb-6">
                       {fw.description}
                     </p>
                   </div>
@@ -186,21 +198,32 @@ export default function FrameworksContent() {
 
       {/* 3. Visual Architecture Section */}
       <section id="architecture" className="py-20 px-4 sm:px-6 max-w-7xl mx-auto border-t border-[#E5E7EB]">
-        <ScrollReveal className="text-center max-w-3xl mx-auto mb-16">
+        <SectionReveal className="text-center max-w-3xl mx-auto mb-16">
           <div className="text-xs font-mono font-semibold uppercase tracking-wider text-[#FF5722] mb-2">
             END-TO-END PIPELINE TOPOLOGY
           </div>
           <h2 className="text-3xl sm:text-5xl font-medium tracking-tight text-[#111827]">
-            The PaperFlow Execution Architecture
+            <ScrollReveal
+              size="lg"
+              align="center"
+              enableBlur={true}
+              baseOpacity={0.1}
+              baseRotation={2}
+              blurStrength={3}
+              staggerDelay={0.035}
+              threshold={0.5}
+            >
+              The PaperFlow Execution Architecture
+            </ScrollReveal>
           </h2>
-          <p className="font-serif text-sm sm:text-base text-[#4B5563] mt-3 leading-relaxed">
+          <p className="text-sm sm:text-base text-[#4B5563] mt-3 leading-relaxed">
             Data flows seamlessly from ingestion sources through our declarative orchestration engine,
             triggering sub-second automated outcomes.
           </p>
-        </ScrollReveal>
+        </SectionReveal>
 
         {/* Visual Architecture Flow Diagram */}
-        <ScrollReveal delay={0.1}>
+        <SectionReveal delay={0.1}>
           <div className="rounded-[16px] border border-[#E5E7EB] bg-white p-6 sm:p-10 shadow-xs">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 relative">
               {architectureStages.map((stage, idx) => (
@@ -227,22 +250,33 @@ export default function FrameworksContent() {
               ))}
             </div>
           </div>
-        </ScrollReveal>
+        </SectionReveal>
       </section>
 
       {/* 4. Workflow Examples (Real Applications) with Stagger */}
       <section className="py-20 px-4 sm:px-6 max-w-7xl mx-auto border-t border-[#E5E7EB]">
-        <ScrollReveal className="max-w-3xl mb-14">
+        <SectionReveal className="max-w-3xl mb-14">
           <div className="text-xs font-mono font-semibold uppercase tracking-wider text-[#FF5722] mb-2">
             PRODUCTION BLUEPRINTS
           </div>
           <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-[#111827]">
-            Proven framework applications in production
+            <ScrollReveal
+              size="lg"
+              align="left"
+              enableBlur={true}
+              baseOpacity={0.1}
+              baseRotation={2}
+              blurStrength={3}
+              staggerDelay={0.035}
+              threshold={0.5}
+            >
+              Proven framework applications in production
+            </ScrollReveal>
           </h2>
-          <p className="font-serif text-sm sm:text-base text-[#4B5563] mt-2 leading-relaxed">
+          <p className="text-sm sm:text-base text-[#4B5563] mt-2 leading-relaxed">
             Real enterprise deployment topologies operating with sub-second execution speeds.
           </p>
-        </ScrollReveal>
+        </SectionReveal>
 
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {examples.map((ex, idx) => (
@@ -260,7 +294,7 @@ export default function FrameworksContent() {
                     {ex.title}
                   </h3>
 
-                  <p className="font-serif text-xs sm:text-sm text-[#4B5563] leading-relaxed mb-6">
+                  <p className="text-xs sm:text-sm text-[#4B5563] leading-relaxed mb-6">
                     {ex.description}
                   </p>
 
@@ -290,17 +324,28 @@ export default function FrameworksContent() {
 
       {/* 5. Final CTA */}
       <section className="py-20 px-4 sm:px-6 max-w-5xl mx-auto border-t border-[#E5E7EB] text-center">
-        <ScrollReveal className="rounded-[16px] border border-[#E5E7EB] bg-[#F4F4F5] p-8 sm:p-14 shadow-xs relative overflow-hidden">
+        <SectionReveal className="rounded-[16px] border border-[#E5E7EB] bg-[#F4F4F5] p-8 sm:p-14 shadow-xs relative overflow-hidden">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E5E7EB] text-xs font-mono font-semibold text-[#FF5722] mb-4">
             <Sparkles size={13} className="fill-[#FF5722]" />
             <span>Ready for Production</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-medium tracking-tight text-[#111827] leading-tight mb-4 max-w-2xl mx-auto">
-            Deploy production-grade frameworks with PaperFlow.
+            <ScrollReveal
+              size="lg"
+              align="center"
+              enableBlur={true}
+              baseOpacity={0.1}
+              baseRotation={2}
+              blurStrength={3}
+              staggerDelay={0.035}
+              threshold={0.5}
+            >
+              Deploy production-grade frameworks with PaperFlow.
+            </ScrollReveal>
           </h2>
 
-          <p className="font-serif text-base sm:text-lg text-[#4B5563] max-w-xl mx-auto mb-8 leading-relaxed">
+          <p className="text-base sm:text-lg text-[#4B5563] max-w-xl mx-auto mb-8 leading-relaxed">
             Eliminate complex glue code. Select an architectural blueprint, plug in your credentials,
             and launch automated pipelines with verified reliability.
           </p>
@@ -320,7 +365,7 @@ export default function FrameworksContent() {
               View Interface Patterns
             </Link>
           </div>
-        </ScrollReveal>
+        </SectionReveal>
       </section>
     </div>
   );

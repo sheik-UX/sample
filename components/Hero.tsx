@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { useAnimationFrame, useReducedMotion } from 'framer-motion';
 import { CloudShader } from './ui/cloud-shader';
+import { ScrollReveal } from '@/components/lightswind/scroll-reveal';
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -457,12 +458,23 @@ export default function Hero() {
 
         {/* Centered Heading - Scaled for Dominance */}
         <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-[76px] font-medium tracking-tight text-[#111827] leading-[1.02] max-w-5xl mb-6">
-          Streamline operations with{' '}
-          <span className="text-[#FF5722]">smart workflows.</span>
+          <ScrollReveal
+            size="xl"
+            align="center"
+            enableBlur={true}
+            baseOpacity={0.1}
+            baseRotation={2}
+            blurStrength={3}
+            staggerDelay={0.04}
+            threshold={0.5}
+          >
+            Streamline operations with{' '}
+            <span className="text-[#FF5722]">smart workflows.</span>
+          </ScrollReveal>
         </h1>
 
-        {/* Centered Description in Editorial Serif (Newsreader) */}
-        <p className="font-serif text-lg sm:text-xl text-[#4B5563] font-normal leading-[1.65] max-w-2xl mb-8">
+        {/* Centered Description - Clean Grotesque Body Typography */}
+        <p className="text-base sm:text-lg text-[#4B5563] font-normal leading-relaxed max-w-2xl mb-8">
           Optimize your daily tasks and harness data for clear outcomes. Expand capabilities
           across your entire product ecosystem with precision design and structured automation.
         </p>

@@ -17,7 +17,8 @@ import {
   Zap,
 } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ScrollReveal } from './animations';
+import { ScrollReveal as SectionReveal } from './animations';
+import { ScrollReveal } from '@/components/lightswind/scroll-reveal';
 
 export default function AboutUs() {
   const shouldReduceMotion = useReducedMotion();
@@ -72,21 +73,32 @@ export default function AboutUs() {
     <section id="about" className="relative py-14 sm:py-18 md:py-22 px-4 sm:px-6 bg-[#FDFDFD] border-t border-[#E5E7EB] overflow-hidden">
       <div className="relative max-w-7xl mx-auto">
         {/* Section Header */}
-        <ScrollReveal className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+        <SectionReveal className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F4F5] border border-[#E5E7EB] text-xs font-mono font-semibold text-[#4B5563] mb-4 shadow-xs">
             <Sparkles size={13} className="text-[#FF5722] fill-[#FF5722]" />
             <span>Platform Architecture // Core Foundation</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-medium tracking-tight text-[#111827] leading-[1.06] mb-4">
-            An operational foundation engineered for modern scale.
+            <ScrollReveal
+              size="lg"
+              align="center"
+              enableBlur={true}
+              baseOpacity={0.1}
+              baseRotation={2}
+              blurStrength={3}
+              staggerDelay={0.035}
+              threshold={0.5}
+            >
+              An operational foundation engineered for modern scale.
+            </ScrollReveal>
           </h2>
 
-          <p className="font-serif text-lg sm:text-xl text-[#4B5563] font-normal leading-[1.65]">
+          <p className="text-base sm:text-lg text-[#4B5563] font-normal leading-relaxed">
             PaperFlow replaces fragile scheduled scripts and fragmented tools with resilient,
             automated workflow pipelines that execute in sub-second cycles.
           </p>
-        </ScrollReveal>
+        </SectionReveal>
 
         {/* 4-Card Bento Grid Layout with Coordinated Framer Motion Entrance */}
         <motion.div
@@ -306,7 +318,7 @@ export default function AboutUs() {
                 <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-[#111827] mb-2">
                   Connects to the entire stack
                 </h3>
-                <p className="font-serif text-sm text-[#4B5563] font-normal leading-relaxed">
+                <p className="text-sm text-[#4B5563] font-normal leading-relaxed">
                   PaperFlow quickly and securely connects to popular warehouses, relational databases,
                   and custom webhook APIs with sub-second event synchronization.
                 </p>
@@ -323,96 +335,96 @@ export default function AboutUs() {
               className="h-full rounded-[16px] bg-white border border-[#E5E7EB] p-6 sm:p-8 flex flex-col justify-between shadow-xs hover:shadow-md transition-shadow hover:border-[#FF5722] group"
             >
               {/* Visual Area: Three Live Orchestration Panels with Progressive State Flow */}
-              <div className="relative w-full h-56 sm:h-64 rounded-[12px] bg-[#F4F4F5] border border-[#E5E7EB] p-4 flex items-center justify-center gap-3 sm:gap-4 overflow-hidden mb-6">
+              <div className="relative w-full h-64 sm:h-64 rounded-[12px] bg-[#F4F4F5] border border-[#E5E7EB] p-2.5 sm:p-4 flex items-center justify-center gap-2 sm:gap-4 overflow-hidden mb-6">
                 
                 {/* Panel 1: Data Table Mini-Card (Phase 1: Ingest Scanning) */}
-                <div className="w-1/3 max-w-[170px] h-44 rounded-[10px] bg-white border border-[#E5E7EB] p-3 flex flex-col justify-between shadow-xs transition-all duration-300 group-hover:-translate-y-1">
-                  <div className="flex items-center gap-1.5 pb-2 border-b border-[#E5E7EB]">
-                    <Table size={13} className="text-[#FF5722]" />
-                    <span className="text-[10px] font-mono font-semibold text-[#111827]">DATA SCHEMA</span>
+                <div className="w-1/3 max-w-[170px] h-[184px] sm:h-44 rounded-[10px] bg-white border border-[#E5E7EB] p-2 sm:p-3 flex flex-col justify-between shadow-xs transition-all duration-300 group-hover:-translate-y-1">
+                  <div className="flex items-center gap-1 sm:gap-1.5 pb-2 border-b border-[#E5E7EB]">
+                    <Table size={12} className="text-[#FF5722] shrink-0" />
+                    <span className="text-[8.5px] sm:text-[10px] font-mono font-semibold text-[#111827] truncate">DATA SCHEMA</span>
                   </div>
-                  <div className="space-y-1.5 py-1 text-[10px] font-mono text-[#4B5563]">
+                  <div className="space-y-1 sm:space-y-1.5 py-1 text-[8.5px] sm:text-[10px] font-mono text-[#4B5563]">
                     <motion.div
-                      className="flex items-center gap-1 p-1 rounded bg-[#F4F4F5]"
+                      className="flex items-center gap-1 p-0.5 sm:p-1 rounded bg-[#F4F4F5] truncate"
                       animate={shouldReduceMotion ? {} : {
                         backgroundColor: ['#F4F4F5', '#FFF1EC', '#F4F4F5'],
                       }}
                       transition={{ duration: 6, repeat: Infinity, times: [0, 0.15, 0.35], ease: 'easeInOut' }}
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF5722]" />
-                      <span>customers_cdc</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF5722] shrink-0" />
+                      <span className="truncate">customers_cdc</span>
                     </motion.div>
                     <motion.div
-                      className="flex items-center gap-1 p-1 rounded bg-[#F4F4F5]"
+                      className="flex items-center gap-1 p-0.5 sm:p-1 rounded bg-[#F4F4F5] truncate"
                       animate={shouldReduceMotion ? {} : {
                         backgroundColor: ['#F4F4F5', '#ECFDF5', '#F4F4F5'],
                       }}
                       transition={{ duration: 6, repeat: Infinity, times: [0.15, 0.3, 0.45], ease: 'easeInOut' }}
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                      <span>orders_ledger</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+                      <span className="truncate">orders_ledger</span>
                     </motion.div>
                     <motion.div
-                      className="flex items-center gap-1 p-1 rounded bg-[#F4F4F5]"
+                      className="flex items-center gap-1 p-0.5 sm:p-1 rounded bg-[#F4F4F5] truncate"
                       animate={shouldReduceMotion ? {} : {
                         backgroundColor: ['#F4F4F5', '#F4F4F5', '#F4F4F5'],
                       }}
                       transition={{ duration: 6, repeat: Infinity, times: [0.3, 0.45, 0.6], ease: 'easeInOut' }}
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#9CA3AF]" />
-                      <span>telemetry_log</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#9CA3AF] shrink-0" />
+                      <span className="truncate">telemetry_log</span>
                     </motion.div>
                   </div>
-                  <div className="text-[9px] font-mono text-[#9CA3AF] pt-1 border-t border-[#E5E7EB] flex items-center justify-between">
-                    <span>CDC Sync Active</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <div className="text-[8px] sm:text-[9px] font-mono text-[#9CA3AF] pt-1 border-t border-[#E5E7EB] flex items-center justify-between">
+                    <span className="truncate">CDC Sync Active</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
                   </div>
                 </div>
 
                 {/* Panel 2: Git Commit / Deployment Node (Phase 2: CI Deployment Trigger) */}
-                <div className="w-1/3 max-w-[180px] h-44 rounded-[10px] bg-white border border-[#E5E7EB] p-3 flex flex-col justify-between shadow-xs transition-all duration-300 group-hover:-translate-y-2 z-10">
+                <div className="w-1/3 max-w-[180px] h-[184px] sm:h-44 rounded-[10px] bg-white border border-[#E5E7EB] p-2 sm:p-3 flex flex-col justify-between shadow-xs transition-all duration-300 group-hover:-translate-y-2 z-10">
                   <div className="flex items-center justify-between pb-2 border-b border-[#E5E7EB]">
-                    <div className="flex items-center gap-1.5">
-                      <GitCommit size={13} className="text-[#111827]" />
-                      <span className="text-[10px] font-mono font-semibold text-[#111827]">WORKFLOW CI</span>
+                    <div className="flex items-center gap-1 sm:gap-1.5 truncate">
+                      <GitCommit size={12} className="text-[#111827] shrink-0" />
+                      <span className="text-[8.5px] sm:text-[10px] font-mono font-semibold text-[#111827] truncate">WORKFLOW CI</span>
                     </div>
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
                   </div>
                   <div className="my-auto space-y-1">
-                    <div className="text-[10px] font-mono text-[#4B5563]">Commit #4a8f9</div>
+                    <div className="text-[8.5px] sm:text-[10px] font-mono text-[#4B5563]">Commit #4a8f9</div>
                     <motion.div
-                      className="p-1.5 rounded bg-[#FFF1EC] border border-[#FFD0C2] text-[10px] font-mono text-[#FF5722] font-semibold flex items-center justify-between overflow-hidden relative"
+                      className="p-1 sm:p-1.5 rounded bg-[#FFF1EC] border border-[#FFD0C2] text-[8.5px] sm:text-[10px] font-mono text-[#FF5722] font-semibold flex items-center justify-between overflow-hidden relative"
                       animate={shouldReduceMotion ? {} : {
                         scale: [1, 1.03, 1],
                         boxShadow: ['0 0 0 rgba(255,87,34,0)', '0 0 12px rgba(255,87,34,0.3)', '0 0 0 rgba(255,87,34,0)'],
                       }}
                       transition={{ duration: 6, repeat: Infinity, times: [0.35, 0.5, 0.7], ease: 'easeInOut' }}
                     >
-                      <span>deploy:prod</span>
+                      <span className="truncate">deploy:prod</span>
                       <motion.div
                         animate={shouldReduceMotion ? {} : {
                           scale: [0.7, 1.3, 1],
                         }}
                         transition={{ duration: 6, repeat: Infinity, times: [0.35, 0.48, 0.7], ease: 'easeOut' }}
                       >
-                        <Check size={11} strokeWidth={3} />
+                        <Check size={10} strokeWidth={3} className="shrink-0" />
                       </motion.div>
                     </motion.div>
                   </div>
-                  <div className="text-[9px] font-mono text-[#4B5563] pt-1 border-t border-[#E5E7EB]">
-                    Branch: main (Synced)
+                  <div className="text-[8px] sm:text-[9px] font-mono text-[#4B5563] pt-1 border-t border-[#E5E7EB] truncate">
+                    Branch: main
                   </div>
                 </div>
 
                 {/* Panel 3: DAG Execution Split (Phase 3: Sub-Second Stream) */}
-                <div className="w-1/3 max-w-[170px] h-44 rounded-[10px] bg-white border border-[#E5E7EB] p-3 flex flex-col justify-between shadow-xs transition-all duration-300 group-hover:-translate-y-1">
-                  <div className="flex items-center gap-1.5 pb-2 border-b border-[#E5E7EB]">
-                    <Layers size={13} className="text-[#FF5722]" />
-                    <span className="text-[10px] font-mono font-semibold text-[#111827]">PIPELINE DAG</span>
+                <div className="w-1/3 max-w-[170px] h-[184px] sm:h-44 rounded-[10px] bg-white border border-[#E5E7EB] p-2 sm:p-3 flex flex-col justify-between shadow-xs transition-all duration-300 group-hover:-translate-y-1">
+                  <div className="flex items-center gap-1 sm:gap-1.5 pb-2 border-b border-[#E5E7EB]">
+                    <Layers size={12} className="text-[#FF5722] shrink-0" />
+                    <span className="text-[8.5px] sm:text-[10px] font-mono font-semibold text-[#111827] truncate">PIPELINE DAG</span>
                   </div>
                   <div className="my-auto flex flex-col items-center justify-center gap-1">
                     <motion.div
-                      className="w-full text-center px-1.5 py-0.5 rounded bg-[#F4F4F5] text-[9px] font-mono text-[#111827] border border-[#E5E7EB]"
+                      className="w-full text-center px-1 py-0.5 rounded bg-[#F4F4F5] text-[8px] sm:text-[9px] font-mono text-[#111827] border border-[#E5E7EB] truncate"
                       animate={shouldReduceMotion ? {} : {
                         borderColor: ['#E5E7EB', '#FF5722', '#E5E7EB'],
                         backgroundColor: ['#F4F4F5', '#FFF1EC', '#F4F4F5'],
@@ -422,7 +434,7 @@ export default function AboutUs() {
                       Ingest Node
                     </motion.div>
                     <motion.div
-                      className="h-3 w-px bg-[#FF5722]"
+                      className="h-2 sm:h-3 w-px bg-[#FF5722]"
                       animate={shouldReduceMotion ? {} : {
                         scaleY: [0.4, 1.2, 0.4],
                         opacity: [0.4, 1, 0.4],
@@ -430,7 +442,7 @@ export default function AboutUs() {
                       transition={{ duration: 6, repeat: Infinity, times: [0.7, 0.8, 0.95], ease: 'easeInOut' }}
                     />
                     <motion.div
-                      className="w-full text-center px-1.5 py-0.5 rounded bg-[#FFF1EC] text-[9px] font-mono text-[#FF5722] font-semibold border border-[#FFD0C2]"
+                      className="w-full text-center px-1 py-0.5 rounded bg-[#FFF1EC] text-[8px] sm:text-[9px] font-mono text-[#FF5722] font-semibold border border-[#FFD0C2] truncate"
                       animate={shouldReduceMotion ? {} : {
                         scale: [1, 1.04, 1],
                         boxShadow: ['0 0 0 rgba(255,87,34,0)', '0 0 10px rgba(255,87,34,0.25)', '0 0 0 rgba(255,87,34,0)'],
@@ -440,7 +452,7 @@ export default function AboutUs() {
                       Transform ({latency})
                     </motion.div>
                     <motion.div
-                      className="h-3 w-px bg-[#FF5722]"
+                      className="h-2 sm:h-3 w-px bg-[#FF5722]"
                       animate={shouldReduceMotion ? {} : {
                         scaleY: [0.4, 1.2, 0.4],
                         opacity: [0.4, 1, 0.4],
@@ -448,7 +460,7 @@ export default function AboutUs() {
                       transition={{ duration: 6, repeat: Infinity, times: [0.8, 0.9, 0.98], ease: 'easeInOut' }}
                     />
                     <motion.div
-                      className="w-full text-center px-1.5 py-0.5 rounded bg-emerald-50 text-[9px] font-mono text-emerald-700 border border-emerald-200"
+                      className="w-full text-center px-1 py-0.5 rounded bg-emerald-50 text-[8px] sm:text-[9px] font-mono text-emerald-700 border border-emerald-200 truncate"
                       animate={shouldReduceMotion ? {} : {
                         scale: [1, 1.04, 1],
                         boxShadow: ['0 0 0 rgba(16,185,129,0)', '0 0 10px rgba(16,185,129,0.3)', '0 0 0 rgba(16,185,129,0)'],
@@ -458,7 +470,7 @@ export default function AboutUs() {
                       Webhook Sent
                     </motion.div>
                   </div>
-                  <div className="text-[9px] font-mono text-emerald-600 font-semibold pt-1 border-t border-[#E5E7EB] text-center">
+                  <div className="text-[8px] sm:text-[9px] font-mono text-emerald-600 font-semibold pt-1 border-t border-[#E5E7EB] text-center truncate">
                     Zero Latency Drop
                   </div>
                 </div>
@@ -473,7 +485,7 @@ export default function AboutUs() {
                 <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-[#111827] mb-2">
                   Modern controls, out of the box
                 </h3>
-                <p className="font-serif text-sm text-[#4B5563] font-normal leading-relaxed">
+                <p className="text-sm text-[#4B5563] font-normal leading-relaxed">
                   Ensure engineering and operations teams are unified. Deep native integrations
                   let you orchestrate commits, schema changes, and automated webhooks without extra plumbing.
                 </p>
@@ -490,15 +502,15 @@ export default function AboutUs() {
               className="h-full rounded-[16px] bg-white border border-[#E5E7EB] p-6 sm:p-8 flex flex-col justify-between shadow-xs hover:shadow-md transition-shadow hover:border-[#FF5722] group"
             >
               {/* Visual Area: Stacked Declarative Rule Nodes with Dynamic Ingestion Stream */}
-              <div className="relative w-full h-56 sm:h-64 rounded-[12px] bg-[#F4F4F5] border border-[#E5E7EB] p-5 flex flex-col justify-center gap-2.5 overflow-hidden mb-6">
+              <div className="relative w-full min-h-[255px] sm:min-h-0 sm:h-64 rounded-[12px] bg-[#F4F4F5] border border-[#E5E7EB] p-3 sm:p-5 flex flex-col justify-center gap-2 sm:gap-2.5 overflow-hidden mb-6">
                 
                 {/* Node 1 (Automated Threshold Action) */}
-                <div className="p-3 rounded-[10px] bg-white border border-[#E5E7EB] shadow-xs flex items-center justify-between gap-3 transition-transform duration-300 group-hover:translate-x-0.5">
-                  <div className="flex items-center gap-2 text-xs text-[#111827] font-medium">
-                    <Sparkles size={14} className="text-[#FF5722] shrink-0" />
+                <div className="p-2.5 sm:p-3 rounded-[10px] bg-white border border-[#E5E7EB] shadow-xs flex items-center justify-between gap-2 sm:gap-3 transition-transform duration-300 group-hover:translate-x-0.5">
+                  <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs text-[#111827] font-medium leading-snug">
+                    <Sparkles size={13} className="text-[#FF5722] shrink-0" />
                     <span>Reroute webhook drops exceeding 250ms latency threshold</span>
                   </div>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-50 text-emerald-700 border border-emerald-200 shrink-0 font-semibold flex items-center gap-1">
+                  <span className="px-2 py-0.5 rounded text-[9px] sm:text-[10px] font-mono bg-emerald-50 text-emerald-700 border border-emerald-200 shrink-0 font-semibold flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                     Automated
                   </span>
@@ -506,15 +518,15 @@ export default function AboutUs() {
 
                 {/* Node 2 (Focal Live Stream Query) */}
                 <motion.div
-                  className="p-3.5 rounded-[10px] bg-white border-2 border-[#FF5722] shadow-sm flex items-center justify-between gap-3 z-10 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:shadow-md"
+                  className="p-2.5 sm:p-3.5 rounded-[10px] bg-white border-2 border-[#FF5722] shadow-sm flex items-center justify-between gap-2 sm:gap-3 z-10 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:shadow-md"
                   whileHover={shouldReduceMotion ? {} : { scale: 1.01 }}
                 >
-                  <div className="flex items-center gap-2 text-xs sm:text-sm text-[#111827] font-semibold">
+                  <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-sm text-[#111827] font-semibold leading-snug">
                     <motion.div
                       animate={shouldReduceMotion ? {} : { rotate: [0, 15, -15, 0] }}
                       transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
                     >
-                      <Sparkles size={15} className="text-[#FF5722] fill-[#FF5722] shrink-0" />
+                      <Sparkles size={14} className="text-[#FF5722] fill-[#FF5722] shrink-0" />
                     </motion.div>
                     <span>What is our current multi-region edge ingestion velocity?</span>
                   </div>
@@ -523,19 +535,19 @@ export default function AboutUs() {
                     initial={shouldReduceMotion ? {} : { opacity: 0.6, scale: 0.94 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.35, ease: 'easeOut' }}
-                    className="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-[#FFF1EC] text-[#FF5722] border border-[#FFD0C2] shrink-0 font-bold tabular-nums"
+                    className="px-2 sm:px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-mono bg-[#FFF1EC] text-[#FF5722] border border-[#FFD0C2] shrink-0 font-bold tabular-nums"
                   >
                     {velocity} evt/s
                   </motion.span>
                 </motion.div>
 
                 {/* Node 3 (Execution Latency Record) */}
-                <div className="p-3 rounded-[10px] bg-white border border-[#E5E7EB] shadow-xs flex items-center justify-between gap-3 transition-transform duration-300 group-hover:translate-x-0.5">
-                  <div className="flex items-center gap-2 text-xs text-[#111827] font-medium">
-                    <Sparkles size={14} className="text-[#FF5722] shrink-0" />
+                <div className="p-2.5 sm:p-3 rounded-[10px] bg-white border border-[#E5E7EB] shadow-xs flex items-center justify-between gap-2 sm:gap-3 transition-transform duration-300 group-hover:translate-x-0.5">
+                  <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs text-[#111827] font-medium leading-snug">
+                    <Sparkles size={13} className="text-[#FF5722] shrink-0" />
                     <span>Sync customer records to enterprise CRM with zero schema drift</span>
                   </div>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#F4F4F5] text-[#4B5563] border border-[#E5E7EB] shrink-0 tabular-nums">
+                  <span className="px-2 py-0.5 rounded text-[9px] sm:text-[10px] font-mono bg-[#F4F4F5] text-[#4B5563] border border-[#E5E7EB] shrink-0 tabular-nums">
                     Executed: {latency}
                   </span>
                 </div>
@@ -550,7 +562,7 @@ export default function AboutUs() {
                 <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-[#111827] mb-2">
                   Less time servicing requests
                 </h3>
-                <p className="font-serif text-sm text-[#4B5563] font-normal leading-relaxed">
+                <p className="text-sm text-[#4B5563] font-normal leading-relaxed">
                   Declarative automation empowers business and technical teams to answer critical questions
                   and execute complex data transformations instantly without ongoing operational friction.
                 </p>
@@ -655,7 +667,7 @@ export default function AboutUs() {
                 <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-[#111827] mb-2">
                   Warehouse native & secure
                 </h3>
-                <p className="font-serif text-sm text-[#4B5563] font-normal leading-relaxed">
+                <p className="text-sm text-[#4B5563] font-normal leading-relaxed">
                   Compute runs directly against your data storage with zero egress penalties.
                   Enterprise security controls ensure complete compliance across multi-tenant clusters.
                 </p>

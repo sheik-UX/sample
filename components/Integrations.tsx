@@ -13,7 +13,8 @@ import {
   Sparkles,
   Zap,
 } from 'lucide-react';
-import { ScrollReveal } from './animations';
+import { ScrollReveal as SectionReveal } from './animations';
+import { ScrollReveal } from '@/components/lightswind/scroll-reveal';
 
 export default function Integrations() {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -96,7 +97,7 @@ export default function Integrations() {
     <section id="integrations" className="relative py-14 sm:py-18 md:py-22 px-4 sm:px-6 bg-[#FDFDFD] border-t border-[#E5E7EB] overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <ScrollReveal className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-12">
+        <SectionReveal className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-12">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F4F4F5] border border-[#E5E7EB] text-xs font-mono font-semibold text-[#4B5563] mb-4 shadow-xs">
               <Sparkles size={13} className="text-[#FF5722] fill-[#FF5722]" />
@@ -104,10 +105,21 @@ export default function Integrations() {
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-medium tracking-tight text-[#111827] leading-[1.06] mb-3">
-              Works with the tools your team already uses.
+              <ScrollReveal
+                size="lg"
+                align="left"
+                enableBlur={true}
+                baseOpacity={0.1}
+                baseRotation={2}
+                blurStrength={3}
+                staggerDelay={0.035}
+                threshold={0.5}
+              >
+                Works with the tools your team already uses.
+              </ScrollReveal>
             </h2>
 
-            <p className="font-serif text-lg sm:text-xl text-[#4B5563] font-normal leading-[1.65]">
+            <p className="text-base sm:text-lg text-[#4B5563] font-normal leading-relaxed">
               Connect PaperFlow with the systems your team already relies on. Eliminate custom glue code with pre-built bi-directional connectors.
             </p>
           </div>
@@ -128,10 +140,10 @@ export default function Integrations() {
               </button>
             ))}
           </div>
-        </ScrollReveal>
+        </SectionReveal>
 
         {/* High-Density Architectural Connector Matrix */}
-        <ScrollReveal delay={0.1}>
+        <SectionReveal delay={0.1}>
           <div className="rounded-[16px] border border-[#E5E7EB] bg-white overflow-hidden shadow-xs">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-[#E5E7EB] border-b border-[#E5E7EB]">
               {filtered.slice(0, 4).map((item, idx) => {
@@ -219,7 +231,7 @@ export default function Integrations() {
               </a>
             </div>
           </div>
-        </ScrollReveal>
+        </SectionReveal>
       </div>
     </section>
   );

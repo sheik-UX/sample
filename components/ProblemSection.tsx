@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { AlertTriangle, Check, ArrowRight, XCircle } from 'lucide-react';
-import { ScrollReveal } from './animations';
+import { ScrollReveal as SectionReveal } from './animations';
+import { ScrollReveal } from '@/components/lightswind/scroll-reveal';
 
 export default function ProblemSection() {
   const problems = [
@@ -40,28 +41,39 @@ export default function ProblemSection() {
     <section id="problem" className="relative py-14 sm:py-18 md:py-22 px-4 sm:px-6 bg-[#FDFDFD] overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <ScrollReveal className="max-w-3xl mb-10 sm:mb-12">
+        <SectionReveal className="max-w-3xl mb-10 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F4F4F5] border border-[#E5E7EB] text-xs font-mono font-semibold text-[#4B5563] mb-4 shadow-xs">
             <AlertTriangle size={13} className="text-[#FF5722]" />
             <span>The Operational Challenge</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-medium tracking-tight text-[#111827] leading-[1.06] mb-4">
-            Operations shouldn&apos;t be this complicated.
+            <ScrollReveal
+              size="lg"
+              align="left"
+              enableBlur={true}
+              baseOpacity={0.1}
+              baseRotation={2}
+              blurStrength={3}
+              staggerDelay={0.035}
+              threshold={0.5}
+            >
+              Operations shouldn&apos;t be this complicated.
+            </ScrollReveal>
           </h2>
 
-          <p className="font-serif text-lg sm:text-xl text-[#4B5563] font-normal leading-[1.65] max-w-2xl">
+          <p className="text-base sm:text-lg text-[#4B5563] font-normal leading-relaxed max-w-2xl">
             Modern high-growth teams lose hundreds of hours each quarter managing fragmented tooling,
             brittle custom scripts, and slow manual checkpoints that stall progress.
           </p>
-        </ScrollReveal>
+        </SectionReveal>
 
         {/* Asymmetric Problem vs Solution Architecture */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Left Column: The 4 Bottlenecks as an Editorial List (7 cols) */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-4">
             {problems.map((prob) => (
-              <ScrollReveal key={prob.id} delay={Number(prob.id) * 0.05}>
+              <SectionReveal key={prob.id} delay={Number(prob.id) * 0.05}>
                 <div className="p-6 rounded-[16px] bg-white border border-[#E5E7EB] shadow-xs hover:border-[#FF5722] transition-all group">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex items-center gap-3">
@@ -78,7 +90,7 @@ export default function ProblemSection() {
                     </span>
                   </div>
 
-                  <p className="font-serif text-xs sm:text-sm text-[#4B5563] font-normal leading-relaxed mt-2.5 pl-6">
+                  <p className="text-xs sm:text-sm text-[#4B5563] font-normal leading-relaxed mt-2.5 pl-6">
                     {prob.description}
                   </p>
 
@@ -87,13 +99,13 @@ export default function ProblemSection() {
                     <span className="text-rose-600 font-semibold">{prob.metric}</span>
                   </div>
                 </div>
-              </ScrollReveal>
+              </SectionReveal>
             ))}
           </div>
 
           {/* Right Column: High-Contrast Technical Console (Secondary #121212) (5 cols) */}
           <div className="lg:col-span-5">
-            <ScrollReveal delay={0.15} className="h-full">
+            <SectionReveal delay={0.15} className="h-full">
               <div className="h-full rounded-[16px] bg-[#121212] border border-neutral-800 p-6 sm:p-8 text-white shadow-xl flex flex-col justify-between relative overflow-hidden">
                 {/* Subtle Sentinel corner accent */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#FF5722]/10 rounded-full blur-2xl pointer-events-none" />
@@ -146,7 +158,7 @@ export default function ProblemSection() {
                     </div>
                   </div>
 
-                  <p className="font-serif text-xs sm:text-sm text-neutral-400 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
                     PaperFlow turns multi-hour manual bottlenecks into deterministic, audited execution pipelines.
                   </p>
                 </div>
@@ -161,7 +173,7 @@ export default function ProblemSection() {
                   </a>
                 </div>
               </div>
-            </ScrollReveal>
+            </SectionReveal>
           </div>
         </div>
       </div>

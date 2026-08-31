@@ -7,7 +7,8 @@ import {
   ArrowUpRight,
   Command,
 } from 'lucide-react';
-import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/animations';
+import { ScrollReveal as SectionReveal, StaggerContainer, StaggerItem } from '@/components/animations';
+import { ScrollReveal } from '@/components/lightswind/scroll-reveal';
 
 export default function InterfacePatternsContent() {
   const [activeCategory, setActiveCategory] = useState<string>('All');
@@ -302,17 +303,28 @@ export default function InterfacePatternsContent() {
     <div className="w-full bg-[#FDFDFD] overflow-hidden">
       {/* 1. Hero Section */}
       <section className="relative pt-16 pb-16 md:pt-24 md:pb-24 px-4 sm:px-6 max-w-7xl mx-auto text-center">
-        <ScrollReveal>
+        <SectionReveal>
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F4F5] border border-[#E5E7EB] text-xs font-mono font-semibold text-[#4B5563] mb-6 shadow-xs">
             <Sparkles size={13} className="text-[#FF5722] fill-[#FF5722]" />
             <span>UI Architecture // Component Library</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-medium tracking-tight text-[#111827] leading-[1.08] max-w-4xl mx-auto mb-6">
-            Discover crafted <span className="text-[#FF5722]">interface patterns.</span>
+            <ScrollReveal
+              size="xl"
+              align="center"
+              enableBlur={true}
+              baseOpacity={0.1}
+              baseRotation={2}
+              blurStrength={3}
+              staggerDelay={0.04}
+              threshold={0.5}
+            >
+              Discover crafted <span className="text-[#FF5722]">interface patterns.</span>
+            </ScrollReveal>
           </h1>
 
-          <p className="font-serif text-base sm:text-lg text-[#4B5563] font-normal leading-relaxed max-w-2xl mx-auto mb-10">
+          <p className="text-base sm:text-lg text-[#4B5563] font-normal leading-relaxed max-w-2xl mx-auto mb-10">
             Explore how PaperFlow&apos;s interface patterns help engineering and operations teams build
             clear, powerful operational workflows with rigorous visual consistency.
           </p>
@@ -336,7 +348,7 @@ export default function InterfacePatternsContent() {
               );
             })}
           </div>
-        </ScrollReveal>
+        </SectionReveal>
       </section>
 
       {/* 2. Pattern Gallery Grid with Stagger */}
@@ -360,7 +372,7 @@ export default function InterfacePatternsContent() {
                     {item.title}
                   </h3>
 
-                  <p className="font-serif text-xs sm:text-sm text-[#4B5563] font-normal leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#4B5563] font-normal leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -379,17 +391,28 @@ export default function InterfacePatternsContent() {
 
       {/* 3. Final CTA */}
       <section className="py-20 px-4 sm:px-6 max-w-5xl mx-auto border-t border-[#E5E7EB] text-center">
-        <ScrollReveal className="rounded-[16px] border border-[#E5E7EB] bg-[#F4F4F5] p-8 sm:p-14 shadow-xs relative overflow-hidden">
+        <SectionReveal className="rounded-[16px] border border-[#E5E7EB] bg-[#F4F4F5] p-8 sm:p-14 shadow-xs relative overflow-hidden">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E5E7EB] text-xs font-mono font-semibold text-[#FF5722] mb-4">
             <Sparkles size={13} className="fill-[#FF5722]" />
             <span>Unified Design Architecture</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-medium tracking-tight text-[#111827] leading-tight mb-4 max-w-2xl mx-auto">
-            Ready to build workflows with PaperFlow patterns?
+            <ScrollReveal
+              size="lg"
+              align="center"
+              enableBlur={true}
+              baseOpacity={0.1}
+              baseRotation={2}
+              blurStrength={3}
+              staggerDelay={0.035}
+              threshold={0.5}
+            >
+              Ready to build workflows with PaperFlow patterns?
+            </ScrollReveal>
           </h2>
 
-          <p className="font-serif text-base sm:text-lg text-[#4B5563] max-w-xl mx-auto mb-8 leading-relaxed">
+          <p className="text-base sm:text-lg text-[#4B5563] max-w-xl mx-auto mb-8 leading-relaxed">
             Every pattern shown above is available as a reusable, accessible component block in our
             core platform design system.
           </p>
@@ -409,7 +432,7 @@ export default function InterfacePatternsContent() {
               Back to Home
             </Link>
           </div>
-        </ScrollReveal>
+        </SectionReveal>
       </section>
     </div>
   );

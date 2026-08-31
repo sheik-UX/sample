@@ -42,15 +42,15 @@ export default function Navbar() {
           : 'bg-[#FDFDFD] py-5 border-b border-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Brand Logo - Navigates Home */}
-        <Link href="/" className="flex items-center gap-2.5 text-[#111827] focus:outline-none group">
+        <Link href="/" className="flex items-center gap-2 text-[#111827] focus:outline-none group shrink-0">
           <div className="w-8 h-8 rounded-[8px] bg-[#FF5722] text-white flex items-center justify-center font-bold text-sm tracking-tight shadow-sm group-hover:scale-105 transition-transform">
             P
           </div>
-          <span className="font-semibold text-lg tracking-tight text-[#111827] flex items-center gap-2">
+          <span className="font-semibold text-base sm:text-lg tracking-tight text-[#111827] flex items-center gap-2">
             PaperFlow
-            <span className="text-[11px] font-mono font-medium px-2 py-0.5 rounded-full bg-[#F4F4F5] border border-[#E5E7EB] text-[#4B5563]">
+            <span className="hidden sm:inline-flex text-[11px] font-mono font-medium px-2 py-0.5 rounded-full bg-[#F4F4F5] border border-[#E5E7EB] text-[#4B5563]">
               Flow Platform
             </span>
           </span>

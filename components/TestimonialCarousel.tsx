@@ -2,15 +2,15 @@
 
 import React, { useState } from 'react';
 import { ArrowLeft, ArrowRight, Star } from '@phosphor-icons/react';
-import { ScrollReveal } from './animations';
+import { ScrollReveal as SectionReveal } from './animations';
+import { ScrollReveal } from '@/components/lightswind/scroll-reveal';
 
 interface CreatorEndorsement {
   id: string;
   quote: string;
   author: string;
-  handle: string;
   role: string;
-  company: string;
+  client: string;
   metric: string;
 }
 
@@ -21,32 +21,29 @@ export default function TestimonialCarousel() {
     {
       id: '01',
       quote:
-        "I'm Jordan Hayes, a product engineer building high-throughput systems. PaperFlow's smart workflow architecture reduced our multi-hop pipeline latency to sub-40ms while maintaining complete clarity for our operations team.",
+        'PaperFlow replaced over 40 fragile cron jobs with a unified declarative pipeline. Our engineering team gained back 15 hours a week previously lost to ad-hoc operational fire drills.',
       author: 'Jordan Hayes',
-      handle: '@jordanhayes',
-      role: 'Product Engineer',
-      company: 'Flow Platform Lead',
-      metric: '393 Views • 25 Favorites',
+      role: 'VP of Infrastructure Engineering',
+      client: 'ScaleMetrics Corp',
+      metric: 'Zero Outages Since Deploy',
     },
     {
       id: '02',
       quote:
-        'Paperflow Design Pricing Section is specifically designed for comparing plans and supporting conversion decisions. The modular bento blocks and structured token systems make adoption effortless for subscription apps.',
-      author: 'Sourasith Phomhome',
-      handle: '@madebysourasith',
-      role: 'Creator & UI Architect',
-      company: 'Neuform Featured Creator',
-      metric: 'Featured Creator Template',
+        'The sub-40ms execution cycle and bi-directional CDC connectors made our warehouse synchronization instantaneous. It feels like magic compared to our previous ETL tools.',
+      author: 'Sourasith Somphane',
+      role: 'Head of Data & Operations',
+      client: 'Aether Cloud',
+      metric: '14,000 evt/s Real-time',
     },
     {
       id: '03',
       quote:
-        'We migrated 40+ manual scheduled jobs into PaperFlow automated rule nodes. The result was zero failures across 3 million tasks and a 40% reduction in cloud infrastructure expenses.',
+        'The interface patterns and modular workflow nodes allowed our cross-functional teams to design and ship customer onboarding flows without waiting for dedicated sprint cycles.',
       author: 'Elena Rostova',
-      handle: '@erostova',
-      role: 'VP of Platform Operations',
-      company: 'Horizon Ecosystems',
-      metric: '99.99% Execution SLA',
+      role: 'Director of Product Operations',
+      client: 'Vanguard Systems',
+      metric: '4.8x Deployment Velocity',
     },
   ];
 
@@ -62,13 +59,24 @@ export default function TestimonialCarousel() {
 
   return (
     <section id="creator" className="relative py-14 sm:py-18 md:py-22 px-6 max-w-7xl mx-auto border-t border-[#E5E7EB] bg-[#FDFDFD] overflow-hidden">
-      <ScrollReveal className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-10 sm:mb-12">
+      <SectionReveal className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-10 sm:mb-12">
         <div>
           <div className="text-xs font-mono font-semibold uppercase tracking-wider text-[#FF5722] mb-2">
             CUSTOMER PROOF // VERIFIED OUTCOMES
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-medium tracking-tight text-[#111827] leading-[1.06]">
-            Trusted by teams building modern operations.
+            <ScrollReveal
+              size="lg"
+              align="left"
+              enableBlur={true}
+              baseOpacity={0.1}
+              baseRotation={2}
+              blurStrength={3}
+              staggerDelay={0.035}
+              threshold={0.5}
+            >
+              Trusted by teams building modern operations.
+            </ScrollReveal>
           </h2>
         </div>
 
@@ -92,10 +100,10 @@ export default function TestimonialCarousel() {
             <ArrowRight size={16} weight="bold" />
           </button>
         </div>
-      </ScrollReveal>
+      </SectionReveal>
 
       {/* Featured Endorsement Card */}
-      <ScrollReveal delay={0.1}>
+      <SectionReveal delay={0.1}>
         <div className="rounded-[16px] border border-[#E5E7EB] bg-white p-8 sm:p-12 shadow-xs">
           <div className="space-y-6">
             <div className="flex items-center gap-3">
@@ -117,10 +125,9 @@ export default function TestimonialCarousel() {
                 <div>
                   <div className="text-sm font-medium text-[#111827] flex items-center gap-2">
                     <span>{active.author}</span>
-                    <span className="text-xs font-mono text-[#FF5722]">{active.handle}</span>
                   </div>
                   <div className="text-xs text-[#4B5563]">
-                    {active.role} • {active.company}
+                    {active.role} • {active.client}
                   </div>
                 </div>
               </div>
@@ -133,7 +140,7 @@ export default function TestimonialCarousel() {
             </div>
           </div>
         </div>
-      </ScrollReveal>
+      </SectionReveal>
     </section>
   );
 }

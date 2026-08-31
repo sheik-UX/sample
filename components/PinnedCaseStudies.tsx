@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import { ArrowUpRight } from '@phosphor-icons/react';
-import { ScrollReveal } from './animations';
+import { ScrollReveal as SectionReveal } from './animations';
+import { ScrollReveal } from '@/components/lightswind/scroll-reveal';
 
 interface ProjectSlide {
   id: string;
@@ -55,14 +56,25 @@ export default function PinnedCaseStudies() {
     <section id="frameworks" className="relative py-14 sm:py-18 md:py-22 px-6 max-w-7xl mx-auto border-t border-[#E5E7EB] bg-[#FDFDFD] overflow-hidden">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         {/* Left Column with Original Illustration */}
-        <ScrollReveal className="lg:col-span-4 lg:sticky lg:top-28 space-y-6">
+        <SectionReveal className="lg:col-span-4 lg:sticky lg:top-28 space-y-6">
           <div className="text-xs font-mono font-semibold uppercase tracking-wider text-[#FF5722]">
             ENTERPRISE DEPLOYMENTS
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-medium tracking-tight text-[#111827] leading-[1.08]">
-            Proven workflow architectures across modern teams.
+            <ScrollReveal
+              size="lg"
+              align="left"
+              enableBlur={true}
+              baseOpacity={0.1}
+              baseRotation={2}
+              blurStrength={3}
+              staggerDelay={0.035}
+              threshold={0.5}
+            >
+              Proven workflow architectures across modern teams.
+            </ScrollReveal>
           </h2>
-          <p className="font-serif text-base sm:text-lg text-[#4B5563] font-normal leading-[1.65]">
+          <p className="text-base sm:text-lg text-[#4B5563] font-normal leading-relaxed">
             Hover each workflow slice to inspect the node architecture, throughput telemetry, and
             measured operational gains.
           </p>
@@ -91,10 +103,10 @@ export default function PinnedCaseStudies() {
               <ArrowUpRight size={14} weight="bold" />
             </a>
           </div>
-        </ScrollReveal>
+        </SectionReveal>
 
         {/* Right Column: Horizontal Expanding Slices */}
-        <ScrollReveal delay={0.1} className="lg:col-span-8 flex flex-col md:flex-row h-[500px] md:h-[580px] gap-4 select-none">
+        <SectionReveal delay={0.1} className="lg:col-span-8 flex flex-col md:flex-row h-auto md:h-[580px] gap-3 sm:gap-4 select-none">
           {projects.map((project, index) => {
             const isActive = activeProject === index;
             return (
@@ -102,10 +114,10 @@ export default function PinnedCaseStudies() {
                 key={project.id}
                 onMouseEnter={() => setActiveProject(index)}
                 onClick={() => setActiveProject(index)}
-                className={`relative rounded-[16px] overflow-hidden border border-[#E5E7EB] cursor-pointer transition-all duration-500 ease-out flex flex-col justify-between p-6 sm:p-8 ${
+                className={`relative rounded-[16px] overflow-hidden border border-[#E5E7EB] cursor-pointer transition-all duration-500 ease-out flex flex-col justify-between p-4 sm:p-6 md:p-8 ${
                   isActive
-                    ? 'md:flex-[3] flex-[3] bg-white shadow-md border-[#FF5722]'
-                    : 'md:flex-[1] flex-[1] bg-[#F4F4F5] hover:bg-[#E5E7EB]'
+                    ? 'md:flex-[3] min-h-[220px] md:min-h-0 bg-white shadow-md border-[#FF5722]'
+                    : 'md:flex-[1] min-h-[64px] md:min-h-0 bg-[#F4F4F5] hover:bg-[#E5E7EB]'
                 }`}
               >
                 {/* Top Header */}
@@ -123,36 +135,42 @@ export default function PinnedCaseStudies() {
                 </div>
 
                 {/* Bottom Content */}
-                <div className="space-y-3">
-                  <div className="inline-block px-3 py-1 rounded-full bg-[#FFF1EC] border border-[#FFD0C2] text-[11px] font-mono font-semibold text-[#FF5722]">
-                    {project.metric}
-                  </div>
+                {isActive ? (
+                  <div className="space-y-2 sm:space-y-3 mt-4 md:mt-0">
+                    <div className="inline-block px-3 py-1 rounded-full bg-[#FFF1EC] border border-[#FFD0C2] text-[11px] font-mono font-semibold text-[#FF5722]">
+                      {project.metric}
+                    </div>
 
-                  <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-[#111827]">
-                    {project.title}
-                  </h3>
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-medium tracking-tight text-[#111827]">
+                      {project.title}
+                    </h3>
 
-                  <p className="text-xs text-[#4B5563] font-normal">
-                    {project.category}
-                  </p>
+                    <p className="text-xs text-[#4B5563] font-normal">
+                      {project.category}
+                    </p>
 
-                  {isActive && (
-                    <div className="pt-2 flex flex-wrap gap-2 animate-in fade-in duration-300">
+                    <div className="pt-2 flex flex-wrap gap-1.5 sm:gap-2 animate-in fade-in duration-300">
                       {project.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-2.5 py-0.5 rounded-[6px] text-[11px] font-mono bg-[#F4F4F5] text-[#4B5563] border border-[#E5E7EB]"
+                          className="px-2.5 py-0.5 rounded-[6px] text-[10px] sm:text-[11px] font-mono bg-[#F4F4F5] text-[#4B5563] border border-[#E5E7EB]"
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
-                  )}
-                </div>
+                  </div>
+                ) : (
+                  <div className="hidden md:block">
+                    <span className="text-[11px] font-mono text-[#9CA3AF] truncate">
+                      {project.metric}
+                    </span>
+                  </div>
+                )}
               </div>
             );
           })}
-        </ScrollReveal>
+        </SectionReveal>
       </div>
     </section>
   );

@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import { Plus, Minus, Sparkles } from 'lucide-react';
-import { ScrollReveal, StaggerContainer, StaggerItem } from './animations';
+import { ScrollReveal as SectionReveal, StaggerContainer, StaggerItem } from './animations';
+import { ScrollReveal } from '@/components/lightswind/scroll-reveal';
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -48,20 +49,31 @@ export default function FAQSection() {
     <section id="faq" className="relative py-14 sm:py-18 md:py-22 px-4 sm:px-6 bg-[#FDFDFD] border-t border-[#E5E7EB] overflow-hidden">
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
-        <ScrollReveal className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+        <SectionReveal className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F4F4F5] border border-[#E5E7EB] text-xs font-mono font-semibold text-[#4B5563] mb-4 shadow-xs">
             <Sparkles size={13} className="text-[#FF5722] fill-[#FF5722]" />
             <span>Common Inquiries</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-medium tracking-tight text-[#111827] leading-[1.06] mb-4">
-            Frequently asked questions.
+            <ScrollReveal
+              size="lg"
+              align="center"
+              enableBlur={true}
+              baseOpacity={0.1}
+              baseRotation={2}
+              blurStrength={3}
+              staggerDelay={0.035}
+              threshold={0.5}
+            >
+              Frequently asked questions.
+            </ScrollReveal>
           </h2>
 
-          <p className="font-serif text-lg sm:text-xl text-[#4B5563] font-normal leading-[1.65]">
+          <p className="text-base sm:text-lg text-[#4B5563] font-normal leading-relaxed">
             Everything you need to know about PaperFlow architecture, integrations, security, and onboarding.
           </p>
-        </ScrollReveal>
+        </SectionReveal>
 
         {/* FAQ Accordion List with Stagger */}
         <StaggerContainer className="space-y-4">
@@ -90,7 +102,7 @@ export default function FAQSection() {
                   </button>
 
                   {isOpen && (
-                    <div className="px-6 pb-6 pt-1 font-serif text-sm sm:text-base text-[#4B5563] font-normal leading-relaxed border-t border-[#E5E7EB]/60">
+                    <div className="px-6 pb-6 pt-1 text-sm sm:text-base text-[#4B5563] font-normal leading-relaxed border-t border-[#E5E7EB]/60">
                       <p>{faq.answer}</p>
                     </div>
                   )}
@@ -101,12 +113,12 @@ export default function FAQSection() {
         </StaggerContainer>
 
         {/* Bottom Support Link */}
-        <ScrollReveal delay={0.1} className="mt-12 text-center text-xs font-mono text-[#4B5563]">
+        <SectionReveal delay={0.1} className="mt-12 text-center text-xs font-mono text-[#4B5563]">
           <span>Still have questions? </span>
           <a href="#contact" className="text-[#FF5722] font-semibold underline underline-offset-4 hover:text-[#E64A19]">
             Speak with an engineering architect
           </a>
-        </ScrollReveal>
+        </SectionReveal>
       </div>
     </section>
   );

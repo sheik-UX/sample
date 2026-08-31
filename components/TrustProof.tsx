@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { Sparkles, ShieldCheck, Activity } from 'lucide-react';
-import { ScrollReveal } from './animations';
+import { ScrollReveal as SectionReveal } from './animations';
+import { ScrollReveal } from '@/components/lightswind/scroll-reveal';
 
 export default function TrustProof() {
   const metrics = [
@@ -45,14 +46,25 @@ export default function TrustProof() {
     <section className="relative py-12 sm:py-16 bg-[#FDFDFD] border-y border-[#E5E7EB] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
-        <ScrollReveal className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+        <SectionReveal className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
           <div>
             <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-[#FF5722] mb-2">
               <Sparkles size={12} className="fill-[#FF5722]" />
               <span>Verified Reliability // Enterprise Benchmarks</span>
             </div>
             <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-medium tracking-tight text-[#111827] leading-[1.1]">
-              Engineered for mission-critical operations.
+              <ScrollReveal
+                size="lg"
+                align="left"
+                enableBlur={true}
+                baseOpacity={0.1}
+                baseRotation={2}
+                blurStrength={3}
+                staggerDelay={0.035}
+                threshold={0.5}
+              >
+                Engineered for mission-critical operations.
+              </ScrollReveal>
             </h2>
           </div>
           <div className="flex items-center gap-3 text-xs font-mono text-[#4B5563] shrink-0">
@@ -65,10 +77,10 @@ export default function TrustProof() {
               SOC2 Type II
             </span>
           </div>
-        </ScrollReveal>
+        </SectionReveal>
 
         {/* Integrated Hairline Metrics Console */}
-        <ScrollReveal delay={0.08}>
+        <SectionReveal delay={0.08}>
           <div className="rounded-[16px] border border-[#E5E7EB] bg-white shadow-xs overflow-hidden">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-[#E5E7EB]">
               {metrics.map((item, idx) => (
@@ -124,7 +136,7 @@ export default function TrustProof() {
               </div>
             </div>
           </div>
-        </ScrollReveal>
+        </SectionReveal>
       </div>
     </section>
   );

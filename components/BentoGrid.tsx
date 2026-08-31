@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowUpRight, Cube } from '@phosphor-icons/react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ScrollReveal, StaggerContainer, StaggerItem, IllustrationReveal } from './animations';
+import { ScrollReveal as SectionReveal, StaggerContainer, StaggerItem, IllustrationReveal } from './animations';
+import { ScrollReveal } from '@/components/lightswind/scroll-reveal';
 
 /* =========================================================================
    CARD 1 OVERLAY: Refined Product Assets (Design System Assembly & Browsing)
@@ -486,21 +487,32 @@ export default function BentoGrid() {
   return (
     <section id="patterns" className="relative py-14 sm:py-18 md:py-22 px-6 max-w-7xl mx-auto bg-[#FDFDFD] overflow-hidden">
       {/* Section Introduction */}
-      <ScrollReveal className="max-w-3xl mb-10 sm:mb-12">
+      <SectionReveal className="max-w-3xl mb-10 sm:mb-12">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F4F4F5] border border-[#E5E7EB] text-xs font-mono font-semibold text-[#4B5563] mb-4">
           <Cube size={13} weight="fill" className="text-[#FF5722]" />
           <span>Product Capabilities // Architecture</span>
         </div>
 
         <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-medium tracking-tight text-[#111827] leading-[1.06] mb-4">
-          Everything you need to build powerful workflows.
+          <ScrollReveal
+            size="lg"
+            align="left"
+            enableBlur={true}
+            baseOpacity={0.1}
+            baseRotation={2}
+            blurStrength={3}
+            staggerDelay={0.035}
+            threshold={0.5}
+          >
+            Everything you need to build powerful workflows.
+          </ScrollReveal>
         </h2>
 
-        <p className="font-serif text-lg sm:text-xl text-[#4B5563] font-normal leading-[1.65]">
+        <p className="text-base sm:text-lg text-[#4B5563] font-normal leading-relaxed">
           Modular design components, intelligent automation nodes, and sub-second execution engines
           engineered for rapid assembly and rigorous operational consistency.
         </p>
-      </ScrollReveal>
+      </SectionReveal>
 
       {/* Gapless Bento Grid with grid-flow-dense & Stagger */}
       <StaggerContainer className="grid grid-cols-12 grid-flow-dense gap-6">

@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import { ArrowUpRight, Check, Sparkle } from '@phosphor-icons/react';
-import { ScrollReveal, IllustrationReveal } from './animations';
+import { ScrollReveal as SectionReveal, IllustrationReveal } from './animations';
+import { ScrollReveal } from '@/components/lightswind/scroll-reveal';
 
 export default function FinalCTA() {
   const [submitted, setSubmitted] = useState(false);
@@ -15,7 +16,7 @@ export default function FinalCTA() {
 
   return (
     <section id="contact" className="relative py-14 sm:py-18 md:py-22 px-6 border-t border-[#E5E7EB] bg-[#FDFDFD] overflow-hidden">
-      <ScrollReveal className="max-w-5xl mx-auto rounded-[16px] border border-[#E5E7EB] bg-[#F4F4F5] p-8 sm:p-14 text-center shadow-xs relative overflow-hidden">
+      <SectionReveal className="max-w-5xl mx-auto rounded-[16px] border border-[#E5E7EB] bg-[#F4F4F5] p-8 sm:p-14 text-center shadow-xs relative overflow-hidden">
         <div className="relative z-10 space-y-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E5E7EB] text-xs font-mono font-semibold text-[#FF5722]">
             <Sparkle size={13} weight="fill" />
@@ -23,10 +24,21 @@ export default function FinalCTA() {
           </div>
 
           <h2 className="text-3xl sm:text-5xl lg:text-[54px] font-medium tracking-tight text-[#111827] leading-[1.04] max-w-3xl mx-auto">
-            Streamline your operations with smart workflows.
+            <ScrollReveal
+              size="lg"
+              align="center"
+              enableBlur={true}
+              baseOpacity={0.1}
+              baseRotation={2}
+              blurStrength={3}
+              staggerDelay={0.035}
+              threshold={0.5}
+            >
+              Streamline your operations with smart workflows.
+            </ScrollReveal>
           </h2>
 
-          <p className="font-serif text-lg sm:text-xl text-[#4B5563] font-normal leading-[1.65] max-w-xl mx-auto">
+          <p className="text-base sm:text-lg text-[#4B5563] font-normal leading-relaxed max-w-xl mx-auto">
             Optimize your daily tasks and harness data for clear outcomes. Start free today with
             full access to our standard workflow nodes.
           </p>
@@ -80,7 +92,7 @@ export default function FinalCTA() {
             <span>Instant workspace setup</span>
           </div>
         </div>
-      </ScrollReveal>
+      </SectionReveal>
     </section>
   );
 }

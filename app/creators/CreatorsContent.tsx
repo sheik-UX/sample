@@ -11,7 +11,8 @@ import {
   DollarSign,
   Award,
 } from 'lucide-react';
-import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/animations';
+import { ScrollReveal as SectionReveal, StaggerContainer, StaggerItem } from '@/components/animations';
+import { ScrollReveal } from '@/components/lightswind/scroll-reveal';
 
 export default function CreatorsContent() {
   const benefits = [
@@ -86,17 +87,28 @@ export default function CreatorsContent() {
     <div className="w-full bg-[#FDFDFD] overflow-hidden">
       {/* 1. Hero Section */}
       <section className="relative pt-16 pb-16 md:pt-24 md:pb-24 px-4 sm:px-6 max-w-7xl mx-auto text-center">
-        <ScrollReveal>
+        <SectionReveal>
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F4F5] border border-[#E5E7EB] text-xs font-mono font-semibold text-[#4B5563] mb-6 shadow-xs">
             <Sparkles size={13} className="text-[#FF5722] fill-[#FF5722]" />
             <span>Creator Network // Certified Architects</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-medium tracking-tight text-[#111827] leading-[1.08] max-w-4xl mx-auto mb-6">
-            Empowering the creators building <span className="text-[#FF5722]">modern operations.</span>
+            <ScrollReveal
+              size="xl"
+              align="center"
+              enableBlur={true}
+              baseOpacity={0.1}
+              baseRotation={2}
+              blurStrength={3}
+              staggerDelay={0.04}
+              threshold={0.5}
+            >
+              Empowering the creators building <span className="text-[#FF5722]">modern operations.</span>
+            </ScrollReveal>
           </h1>
 
-          <p className="font-serif text-base sm:text-lg text-[#4B5563] font-normal leading-relaxed max-w-2xl mx-auto mb-10">
+          <p className="text-base sm:text-lg text-[#4B5563] font-normal leading-relaxed max-w-2xl mx-auto mb-10">
             Join an elite network of product engineers, workflow designers, and operational architects
             creating reusable templates and frameworks for modern companies.
           </p>
@@ -116,7 +128,7 @@ export default function CreatorsContent() {
               Explore Public Blueprints
             </Link>
           </div>
-        </ScrollReveal>
+        </SectionReveal>
       </section>
 
       {/* 2. Creator Benefits Grid with Stagger */}
@@ -141,7 +153,7 @@ export default function CreatorsContent() {
                       {b.title}
                     </h3>
 
-                    <p className="font-serif text-xs sm:text-sm text-[#4B5563] font-normal leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[#4B5563] font-normal leading-relaxed">
                       {b.desc}
                     </p>
                   </div>
@@ -158,17 +170,28 @@ export default function CreatorsContent() {
 
       {/* 3. Featured Creator Showcases with Stagger */}
       <section className="py-20 px-4 sm:px-6 max-w-7xl mx-auto border-t border-[#E5E7EB]">
-        <ScrollReveal className="text-center max-w-3xl mx-auto mb-16">
+        <SectionReveal className="text-center max-w-3xl mx-auto mb-16">
           <div className="text-xs font-mono font-semibold uppercase tracking-wider text-[#FF5722] mb-2">
             FEATURED ARCHITECTS
           </div>
           <h2 className="text-3xl sm:text-5xl font-medium tracking-tight text-[#111827]">
-            Meet the architects shaping PaperFlow
+            <ScrollReveal
+              size="lg"
+              align="center"
+              enableBlur={true}
+              baseOpacity={0.1}
+              baseRotation={2}
+              blurStrength={3}
+              staggerDelay={0.035}
+              threshold={0.5}
+            >
+              Meet the architects shaping PaperFlow
+            </ScrollReveal>
           </h2>
-          <p className="font-serif text-sm sm:text-base text-[#4B5563] mt-3 leading-relaxed">
+          <p className="text-sm sm:text-base text-[#4B5563] mt-3 leading-relaxed">
             Real creators building production blueprints, interface systems, and enterprise pipelines.
           </p>
-        </ScrollReveal>
+        </SectionReveal>
 
         <StaggerContainer className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {creators.map((c, idx) => (
@@ -223,14 +246,25 @@ export default function CreatorsContent() {
 
       {/* 4. Creator Lifecycle with Stagger */}
       <section className="py-20 px-4 sm:px-6 max-w-7xl mx-auto border-t border-[#E5E7EB]">
-        <ScrollReveal className="text-center max-w-3xl mx-auto mb-16">
+        <SectionReveal className="text-center max-w-3xl mx-auto mb-16">
           <div className="text-xs font-mono font-semibold uppercase tracking-wider text-[#FF5722] mb-2">
             CREATOR JOURNEY
           </div>
           <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-[#111827]">
-            How to publish your first workflow blueprint
+            <ScrollReveal
+              size="lg"
+              align="center"
+              enableBlur={true}
+              baseOpacity={0.1}
+              baseRotation={2}
+              blurStrength={3}
+              staggerDelay={0.035}
+              threshold={0.5}
+            >
+              How to publish your first workflow blueprint
+            </ScrollReveal>
           </h2>
-        </ScrollReveal>
+        </SectionReveal>
 
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-5 gap-4">
           {lifecycle.map((item, idx) => (
@@ -255,17 +289,28 @@ export default function CreatorsContent() {
 
       {/* 5. Final CTA / Apply Section */}
       <section id="apply" className="py-20 px-4 sm:px-6 max-w-5xl mx-auto border-t border-[#E5E7EB] text-center">
-        <ScrollReveal className="rounded-[16px] border border-[#E5E7EB] bg-[#F4F4F5] p-8 sm:p-14 shadow-xs relative overflow-hidden">
+        <SectionReveal className="rounded-[16px] border border-[#E5E7EB] bg-[#F4F4F5] p-8 sm:p-14 shadow-xs relative overflow-hidden">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E5E7EB] text-xs font-mono font-semibold text-[#FF5722] mb-4">
             <Sparkles size={13} className="fill-[#FF5722]" />
             <span>Applications Open // Q3 Cohort</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-medium tracking-tight text-[#111827] leading-tight mb-4 max-w-2xl mx-auto">
-            Ready to become a certified PaperFlow creator?
+            <ScrollReveal
+              size="lg"
+              align="center"
+              enableBlur={true}
+              baseOpacity={0.1}
+              baseRotation={2}
+              blurStrength={3}
+              staggerDelay={0.035}
+              threshold={0.5}
+            >
+              Ready to become a certified PaperFlow creator?
+            </ScrollReveal>
           </h2>
 
-          <p className="font-serif text-base sm:text-lg text-[#4B5563] max-w-xl mx-auto mb-8 leading-relaxed">
+          <p className="text-base sm:text-lg text-[#4B5563] max-w-xl mx-auto mb-8 leading-relaxed">
             Apply to join our creator network. Earn revenue, distribute verified operational
             blueprints, and help teams build sub-second automated workflows.
           </p>
@@ -285,7 +330,7 @@ export default function CreatorsContent() {
               Back to Home
             </Link>
           </div>
-        </ScrollReveal>
+        </SectionReveal>
       </section>
     </div>
   );
