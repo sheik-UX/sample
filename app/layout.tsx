@@ -1,43 +1,39 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, JetBrains_Mono, Newsreader } from 'next/font/google';
+import { Cormorant_Garamond, Outfit } from 'next/font/google';
 import './globals.css';
 
-const inter = Inter({
+const davinciSerif = Cormorant_Garamond({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter',
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-mono',
-});
-
-const newsreader = Newsreader({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-newsreader',
+  variable: '--font-davinci',
+  weight: ['400', '500'],
   style: ['normal', 'italic'],
 });
 
+const helveticaNow = Outfit({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-helvetica-now',
+  weight: ['400', '500'],
+});
+
 export const viewport: Viewport = {
-  themeColor: '#FDFDFD',
+  themeColor: '#c4c3b6',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
 };
 
 export const metadata: Metadata = {
-  title: 'PaperFlow — Flow Platform & Smart Workflows',
+  title: 'VIP SPARK — Luxury Wedding & Architectural Event Production',
   description:
-    'Streamline operations with smart workflows. Optimize your daily tasks and harness data for clear outcomes with the Paperflow Design platform.',
+    'A Renaissance gallery on putty paper. Bespoke event direction, spatial architecture, and monumental celebration production.',
   openGraph: {
-    title: 'PaperFlow — Flow Platform & Smart Workflows',
+    title: 'VIP SPARK — Moments That Stay',
     description:
-      'Streamline operations with smart workflows. Optimize your daily tasks and harness data for clear outcomes.',
-    url: 'https://paperflow.design',
-    siteName: 'PaperFlow Design',
+      'Curated event management, spatial engineering, and monumental celebration production.',
+    url: 'https://vipspark.com',
+    siteName: 'VIP SPARK',
     locale: 'en_US',
     type: 'website',
   },
@@ -51,9 +47,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} ${newsreader.variable} font-sans`}
+      className={`${davinciSerif.variable} ${helveticaNow.variable} font-sans`}
     >
-      <body className="bg-[#FDFDFD] text-[#111827] antialiased selection:bg-[#FF5722] selection:text-white overflow-x-hidden">
+      <body className="bg-[#c4c3b6] text-[#000000] antialiased selection:bg-[#000000] selection:text-[#ffffff] overflow-x-hidden">
         {children}
       </body>
     </html>

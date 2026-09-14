@@ -1,69 +1,61 @@
-import React from 'react';
-import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import TrustProof from '@/components/TrustProof';
-import ProblemSection from '@/components/ProblemSection';
-import AboutUs from '@/components/AboutUs';
-import HowItWorks from '@/components/HowItWorks';
-import BentoGrid from '@/components/BentoGrid';
-import UseCases from '@/components/UseCases';
-import PinnedCaseStudies from '@/components/PinnedCaseStudies';
-import ScrubTextReveal from '@/components/ScrubTextReveal';
-import Integrations from '@/components/Integrations';
-import TestimonialCarousel from '@/components/TestimonialCarousel';
-import PlanComparison from '@/components/PlanComparison';
-import FAQSection from '@/components/FAQSection';
-import FinalCTA from '@/components/FinalCTA';
-import Footer from '@/components/Footer';
+'use client';
+
+import React, { useState } from 'react';
+import Navbar from '@/components/vip-spark/Navbar';
+import Hero from '@/components/vip-spark/Hero';
+import NotchedPanel from '@/components/vip-spark/NotchedPanel';
+import Services from '@/components/vip-spark/Services';
+import SelectedWork from '@/components/vip-spark/SelectedWork';
+import Process from '@/components/vip-spark/Process';
+import FinalCTA from '@/components/vip-spark/FinalCTA';
+import Footer from '@/components/vip-spark/Footer';
+import InquiryDrawer from '@/components/vip-spark/InquiryDrawer';
 
 export default function Home() {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [activeServiceInquiry, setActiveServiceInquiry] = useState<string>('');
+
+  const handleOpenInquiry = (service: string = '') => {
+    setActiveServiceInquiry(service);
+    setDrawerOpen(true);
+  };
+
+  const handleCloseInquiry = () => {
+    setDrawerOpen(false);
+  };
+
   return (
-    <main className="overflow-x-hidden w-full max-w-full bg-[#FDFDFD] text-[#111827]">
-      {/* 00 — Paperflow Sticky Navigation */}
-      <Navbar />
+    <main className="overflow-x-hidden w-full max-w-full bg-[#c4c3b6] text-[#000000]">
+      {/* 00 — Minimal Header on Putty (#c4c3b6): Monoline Circled Logo Mark & Ghost Links */}
+      <Navbar onOpenInquiry={() => handleOpenInquiry()} />
 
-      {/* 01 — HERO: Streamline operations with smart workflows */}
-      <Hero />
+      {/* 01 — Hero Wordmark Section: Putty Canvas, 52px Cluster, Stat Pair, Black Pill Button & 374px Cropped Wordmark */}
+      <Hero onPlanEvent={() => handleOpenInquiry()} />
 
-      {/* 02 — TRUST / PROOF: Built for modern teams */}
-      <TrustProof />
+      {/* 02 — Full-Bleed Classical Painting Panel with Centered 400px Dark Notched Card */}
+      <NotchedPanel onOpenInquiry={() => handleOpenInquiry()} />
 
-      {/* 03 — PROBLEM: Operations shouldn't be this complicated */}
-      <ProblemSection />
+      {/* 03 — Dark Feature Section (#000000): 94px Centered Heading, 200px Circular Vignettes & Hexagonal Dots */}
+      <Services onSelectService={(service) => handleOpenInquiry(service)} />
 
-      {/* 04 — SOLUTION: An operational foundation engineered for modern scale */}
-      <AboutUs />
+      {/* 04 — Light Editorial Section (Putty #c4c3b6 & Bone #e7e5e4): Museum Folio Selected Experiences */}
+      <SelectedWork onInquire={(project) => handleOpenInquiry(project)} />
 
-      {/* 05 — HOW IT WORKS: From idea to automated workflow */}
-      <HowItWorks />
+      {/* 05 — Dark Feature Section (#000000): The 4-Stage Process with Hexagonal Indicators */}
+      <Process />
 
-      {/* 06 — PRODUCT / FEATURES: Everything you need to build powerful workflows */}
-      <BentoGrid />
+      {/* 06 — Closing Chapter on Putty Canvas: 52px Davinci Heading, Black Pill Button & WhatsApp Link */}
+      <FinalCTA onStartConversation={() => handleOpenInquiry()} />
 
-      {/* 07 — USE CASES: Automate work across your entire organization */}
-      <UseCases />
-
-      {/* 08 — WORKFLOW EXAMPLES: Proven workflow architectures across modern teams */}
-      <PinnedCaseStudies />
-      <ScrubTextReveal />
-
-      {/* 09 — INTEGRATIONS: Works with the tools your team already uses */}
-      <Integrations />
-
-      {/* 10 — CUSTOMER PROOF: Trusted by teams building modern operations */}
-      <TestimonialCarousel />
-
-      {/* 11 — PRICING: Compare plans designed for scale and clarity */}
-      <PlanComparison />
-
-      {/* 12 — FAQ: Frequently asked questions */}
-      <FAQSection />
-
-      {/* 13 — FINAL CTA: Streamline your operations with smart workflows */}
-      <FinalCTA />
-
-      {/* 14 — FOOTER: Site directory & copyright */}
+      {/* 07 — Chalk Footer (#ebebeb): Circled Monogram & Studio Hallmarks */}
       <Footer />
+
+      {/* Concierge Inquiry Drawer on Bone Canvas (#e7e5e4) */}
+      <InquiryDrawer
+        isOpen={drawerOpen}
+        onClose={handleCloseInquiry}
+        initialService={activeServiceInquiry}
+      />
     </main>
   );
 }

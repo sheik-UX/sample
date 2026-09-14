@@ -8,84 +8,77 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "#FDFDFD",
-        surface: {
-          DEFAULT: "#E5E7EB",
-          card: "#FFFFFF",
-          muted: "#F4F4F5",
-        },
-        primary: {
-          DEFAULT: "#FF5722",
-          hover: "#E64A19",
-          light: "#FFF1EC",
-        },
-        secondary: {
-          DEFAULT: "#121212",
-        },
-        accent: {
-          DEFAULT: "#FF5722",
-          subtle: "#FFE0D6",
+        putty: {
+          DEFAULT: "#c4c3b6",
         },
         ink: {
-          primary: "#111827",
-          secondary: "#4B5563",
-          muted: "#9CA3AF",
+          DEFAULT: "#000000",
         },
-        border: {
-          DEFAULT: "#E5E7EB",
-          subtle: "#F3F4F6",
+        bone: {
+          DEFAULT: "#e7e5e4",
         },
-        // Backward-compatible tokens mapped to new palette
+        chalk: {
+          DEFAULT: "#ebebeb",
+        },
+        vellum: {
+          DEFAULT: "#dfdcd5",
+        },
+        graphite: {
+          DEFAULT: "#595855",
+        },
+        ash: {
+          DEFAULT: "#808080",
+        },
         paper: {
-          DEFAULT: "#FDFDFD",
-          surface: "#F4F4F5",
-          muted: "#E5E7EB",
+          DEFAULT: "#ffffff",
+        },
+        terracotta: {
+          DEFAULT: "#d97757",
+          hover: "#c66445",
+          soft: "#f6eee9",
         },
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-newsreader)', 'Newsreader', 'Georgia', 'serif'],
-        mono: ['var(--font-mono)', 'JetBrains Mono', 'monospace'],
+        davinci: ['var(--font-davinci)', 'Georgia', 'serif'],
+        helvetica: ['var(--font-helvetica-now)', 'Helvetica Neue', 'Arial', 'sans-serif'],
+      },
+      fontSize: {
+        'body-sm': ['15px', { lineHeight: '1.5' }],
+        'subheading': ['22px', { lineHeight: '1.33', letterSpacing: '-0.11px' }],
+        'heading-sm': ['26px', { lineHeight: '1.33', letterSpacing: '-0.13px' }],
+        'heading': ['43px', { lineHeight: '1.1', letterSpacing: '-0.215px' }],
+        'heading-lg': ['52px', { lineHeight: '1.0', letterSpacing: '-0.47px' }],
+        'section-title': ['94px', { lineHeight: '0.84', letterSpacing: '-0.85px' }],
+        'display': ['374px', { lineHeight: '0.84', letterSpacing: '-3.37px' }],
       },
       borderRadius: {
-        card: "16px",
-        control: "8px",
-        pill: "9999px",
+        'cards': '9px',
+        'links': '2px',
+        'buttons': '28.8px',
       },
       spacing: {
-        base: "8px",
-        gap: "16px",
-        'card-padding': "24px",
-        'section-padding': "80px",
+        '4': '4px',
+        '16': '16px',
+        '20': '20px',
+        '24': '24px',
+        '28': '28px',
+        '32': '32px',
+        '36': '36px',
+        '40': '40px',
+        '52': '52px',
+        '60': '60px',
+        '80': '80px',
+        '96': '96px',
+        '168': '168px',
       },
       animation: {
-        'marquee': 'marquee 28s linear infinite',
-        'subtle-pulse': 'subtle-pulse 3s ease-in-out infinite',
-        'float-slow': 'float-slow 6s ease-in-out infinite',
-        'float-delayed': 'float-delayed 7s ease-in-out 1.5s infinite',
+        marquee: 'marquee 28s linear infinite',
       },
       keyframes: {
         marquee: {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-50%)' },
         },
-        'subtle-pulse': {
-          '0%, 100%': { opacity: '0.9', transform: 'scale(1)' },
-          '50%': { opacity: '1', transform: 'scale(1.02)' },
-        },
-        'float-slow': {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-5px)' },
-        },
-        'float-delayed': {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-4px)' },
-        },
-      },
-      boxShadow: {
-        card: '0 2px 8px -2px rgba(17, 24, 39, 0.04), 0 1px 3px -1px rgba(17, 24, 39, 0.02)',
-        'card-elevated': '0 12px 28px -6px rgba(17, 24, 39, 0.06), 0 4px 10px -2px rgba(17, 24, 39, 0.03)',
-        'primary-glow': '0 8px 24px -4px rgba(255, 87, 34, 0.25)',
       },
     },
   },
