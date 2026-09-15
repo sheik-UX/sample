@@ -63,7 +63,7 @@ export default function NotchedPanel({ onOpenInquiry }: NotchedPanelProps) {
             </h2>
             <p className="font-helvetica text-xs sm:text-[13px] text-[#e7e5e4] font-light leading-relaxed">
               From intimate destination celebrations to large-scale productions,
-              VIP Spark brings creative direction, spatial engineering, and
+              Sample brings creative direction, spatial engineering, and
               uncompromising execution together to create moments people remember.
             </p>
           </div>

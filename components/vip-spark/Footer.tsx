@@ -14,12 +14,12 @@ export default function Footer() {
         <div className="flex items-center gap-4">
           <div className="w-8 h-8 rounded-full border-[1.5px] border-[#000000] flex items-center justify-center">
             <span className="font-davinci text-lg font-medium text-[#000000] leading-none">
-              V
+              S
             </span>
           </div>
           <div>
             <span className="font-helvetica text-xs uppercase tracking-[0.2em] font-medium text-[#000000] block">
-              VIP Spark
+              Sample
             </span>
             <span className="font-helvetica text-[10px] uppercase tracking-[0.18em] text-[#595855] block">
               Renaissance Folio & Production House
@@ -60,7 +60,7 @@ export default function Footer() {
       </div>
 
       <div className="max-w-[1400px] mx-auto mt-12 pt-6 border-t border-[#dfdcd5] flex flex-col sm:flex-row items-center justify-between gap-3 text-[10px] font-helvetica uppercase tracking-widest text-[#595855]">
-        <span>&copy; {new Date().getFullYear()} VIP Spark. Renaissance gallery on putty paper.</span>
+        <span>&copy; {new Date().getFullYear()} Sample. Renaissance gallery on putty paper.</span>
         <span>Strict Confidentiality Guaranteed</span>
       </div>
     </footer>

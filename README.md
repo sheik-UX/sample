@@ -1,8 +1,6 @@
-# sample
+# sample — Luxury Wedding & Event Production
 
-# VIP Spark — Luxury Wedding & Event Production
-
-A high-end editorial website for VIP Spark, an event management and production house inspired by Renaissance gallery aesthetics and modern experiential design.
+A high-end editorial website for Sample, an event management and production house inspired by Renaissance gallery aesthetics and modern experiential design.
 
 ## Features
 - Renaissance Gallery on Putty Paper aesthetic

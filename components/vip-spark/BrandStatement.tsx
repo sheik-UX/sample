@@ -12,7 +12,7 @@ export default function BrandStatement() {
         {/* Editorial Eyebrow */}
         <div className="flex items-center gap-4 text-[10px] md:text-xs uppercase tracking-[0.3em] text-[#C5A880] mb-10 md:mb-16">
           <span className="w-8 h-[1px] bg-[#C5A880]" />
-          <span>The VIP Spark Standard</span>
+          <span>The Sample Standard</span>
         </div>
 
         {/* Large Typographic Break Headline */}

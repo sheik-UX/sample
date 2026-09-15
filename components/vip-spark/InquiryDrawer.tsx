@@ -56,7 +56,7 @@ export default function InquiryDrawer({
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hello VIP Spark, I would like to inquire about planning a ${eventType} for ${formData.guestCount}.`
+    `Hello Sample, I would like to inquire about planning a ${eventType} for ${formData.guestCount}.`
   );
 
   return (
@@ -117,7 +117,7 @@ export default function InquiryDrawer({
                     Commission Brief Received
                   </h3>
                   <p className="font-helvetica text-xs sm:text-sm text-[#595855] max-w-md mx-auto leading-relaxed">
-                    Thank you for entrusting VIP Spark with your vision. Our
+                    Thank you for entrusting Sample with your vision. Our
                     executive creative directors will review your requirements and
                     respond within 24 business hours under strict confidentiality.
                   </p>
@@ -312,7 +312,7 @@ export default function InquiryDrawer({
 
             {/* Discreet Footer Note */}
             <div className="p-6 border-t border-[#dfdcd5] font-helvetica text-[10px] text-[#595855] flex justify-between items-center tracking-widest uppercase">
-              <span>VIP SPARK · ARCHIVE</span>
+              <span>SAMPLE · ARCHIVE</span>
               <span>LONDON · PARIS · LAKE COMO · NEW YORK</span>
             </div>
           </motion.div>

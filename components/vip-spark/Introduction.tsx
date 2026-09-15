@@ -34,7 +34,7 @@ export default function Introduction() {
           {/* Supporting Paragraph & Studio Hallmark */}
           <div className="lg:col-span-4 lg:pt-4 space-y-6">
             <p className="text-base sm:text-lg text-[#4A4C52] font-light leading-relaxed">
-              From intimate celebrations to large-scale productions, VIP Spark
+              From intimate celebrations to large-scale productions, Sample
               brings creative direction, production and execution together to
               create experiences people remember.
             </p>

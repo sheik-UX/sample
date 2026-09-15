@@ -11,7 +11,7 @@ export default function FinalCTA({ onStartConversation }: FinalCTAProps) {
   const whatsappUrl =
     'https://wa.me/?text=' +
     encodeURIComponent(
-      'Hello VIP Spark, I would like to discuss planning an upcoming wedding / event.'
+      'Hello Sample, I would like to discuss planning an upcoming wedding / event.'
     );
 
   return (
@@ -33,7 +33,7 @@ export default function FinalCTA({ onStartConversation }: FinalCTAProps) {
           className="w-10 h-10 rounded-full border-[1.5px] border-[#000000] flex items-center justify-center mb-8"
         >
           <span className="font-davinci text-2xl font-medium text-[#000000] leading-none">
-            V
+            S
           </span>
         </motion.div>
 

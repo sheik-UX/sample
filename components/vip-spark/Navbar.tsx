@@ -24,14 +24,14 @@ export default function Navbar({ onOpenInquiry }: NavbarProps) {
       <a
         href="#"
         className="flex items-center gap-2.5 group focus:outline-none"
-        aria-label="VIP Spark Home"
+        aria-label="Sample Home"
       >
         <div className="w-8 h-8 rounded-full bg-[#f6eee9] border border-[#ebdcd4] flex items-center justify-center transition-transform group-hover:scale-105">
           <Heart className="w-4 h-4 text-[#d97757] fill-[#d97757]" />
         </div>
         <div className="flex flex-col">
           <span className="font-davinci text-xl font-medium tracking-tight text-[#1a1816]">
-            VIP Spark
+            Sample
           </span>
           <span className="font-helvetica text-[8px] uppercase tracking-[0.24em] text-[#8c827a]">
             Bespoke Weddings

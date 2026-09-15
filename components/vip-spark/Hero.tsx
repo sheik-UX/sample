@@ -100,7 +100,7 @@ export default function Hero({ onPlanEvent }: HeroProps) {
                   </span>
                 </div>
                 <p className="font-helvetica text-xs sm:text-[13px] text-white/90 leading-relaxed mb-4 font-light">
-                  &ldquo;VIP Spark transformed our Lake Como wedding into pure
+                  &ldquo;Sample transformed our Lake Como wedding into pure
                   magic. Every single detail was seamless—we simply lived in the
                   moment.&rdquo;
                 </p>

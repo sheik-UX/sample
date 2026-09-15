@@ -25,15 +25,15 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'VIP SPARK — Luxury Wedding & Architectural Event Production',
+  title: 'Sample — Luxury Wedding & Architectural Event Production',
   description:
     'A Renaissance gallery on putty paper. Bespoke event direction, spatial architecture, and monumental celebration production.',
   openGraph: {
-    title: 'VIP SPARK — Moments That Stay',
+    title: 'Sample — Moments That Stay',
     description:
       'Curated event management, spatial engineering, and monumental celebration production.',
-    url: 'https://vipspark.com',
-    siteName: 'VIP SPARK',
+    url: 'https://sample.design',
+    siteName: 'Sample',
     locale: 'en_US',
     type: 'website',
   },
