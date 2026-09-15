@@ -10,14 +10,14 @@ interface HeroProps {
 }
 
 const tickerItems = [
-  'Photography',
-  'Venue Planning',
-  'Catering & Menu',
-  'Entertainment',
   'Videography',
   'Floral Architecture',
   'Spatial Staging',
   'Guest Concierge',
+  'Photography',
+  'Venue Planning',
+  'Catering & Menu',
+  'Entertainment',
 ];
 
 export default function Hero({ onPlanEvent }: HeroProps) {
@@ -26,42 +26,43 @@ export default function Hero({ onPlanEvent }: HeroProps) {
       {/* 1. Upper Editorial Headline Area */}
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 pt-12 md:pt-20 pb-10 md:pb-14">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 lg:gap-14">
-          {/* Left: Dominant Editorial Headline */}
+          {/* Left: Dominant Editorial Headline (3-Line Break) */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-3xl text-left"
           >
-            <div className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-[#8c827a] mb-4 font-helvetica">
-              <Heart className="w-3.5 h-3.5 text-[#d97757] fill-[#d97757]" />
+            <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#7d756d] mb-4 font-helvetica">
+              <Heart className="w-3.5 h-3.5 text-[#c65d3b] fill-[#c65d3b]" />
               <span>Bespoke Weddings & Monumental Celebrations</span>
             </div>
 
-            <h1 className="font-davinci text-5xl sm:text-6xl md:text-7xl lg:text-[88px] leading-[1.02] tracking-[-0.02em] font-normal text-[#1a1816]">
+            <h1 className="font-davinci text-5xl sm:text-6xl md:text-7xl lg:text-[88px] leading-[1.0] tracking-[-0.03em] font-normal text-[#151413]">
               Celebrate love <br />
-              leave the stress to us.
+              leave the stress to <br />
+              us.
             </h1>
           </motion.div>
 
-          {/* Right: Narrow Supporting Editorial Block & Understated CTA */}
+          {/* Right: Supporting Editorial Body & Solid Terracotta CTA Button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full lg:max-w-[360px] text-left lg:pb-3 flex flex-col items-start"
+            className="w-full lg:max-w-[430px] text-left flex flex-col items-start lg:pb-1"
           >
-            <p className="font-helvetica text-[15px] sm:text-[16px] leading-[1.65] text-[#59524c] mb-5 font-normal">
+            <p className="font-helvetica text-[15px] sm:text-[16px] leading-[1.62] text-[#4b4540] mb-6 font-normal">
               From intimate gatherings to unforgettable celebrations, we take care of every detail behind the scenes — so you can be fully present for the moments that matter.
             </p>
 
             <button
               type="button"
               onClick={onPlanEvent}
-              className="group inline-flex items-center gap-2 font-helvetica text-xs sm:text-[13px] font-medium tracking-[0.14em] uppercase text-[#1a1816] hover:text-[#d97757] transition-colors duration-200"
+              className="inline-flex items-center gap-3 bg-[#c65d3b] hover:bg-[#b25132] text-white font-helvetica text-xs sm:text-[13px] font-medium tracking-[0.16em] uppercase px-7 py-3.5 rounded-[3px] shadow-sm transition-all duration-200 hover:shadow-md active:scale-[0.99]"
             >
               <span>Plan your celebration</span>
-              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
+              <ArrowRight className="w-4 h-4" />
             </button>
           </motion.div>
         </div>
