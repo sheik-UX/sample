@@ -24,23 +24,47 @@ export default function Hero({ onPlanEvent }: HeroProps) {
   return (
     <section className="relative w-full bg-[#fdfbf7] text-[#111215] overflow-hidden select-none">
       {/* 1. Upper Editorial Headline Area */}
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 pt-12 md:pt-20 pb-10 md:pb-14 text-center sm:text-left">
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-4xl"
-        >
-          <div className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-[#8c827a] mb-4 font-helvetica">
-            <Heart className="w-3.5 h-3.5 text-[#d97757] fill-[#d97757]" />
-            <span>Bespoke Weddings & Monumental Celebrations</span>
-          </div>
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 pt-12 md:pt-20 pb-10 md:pb-14">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 lg:gap-14">
+          {/* Left: Dominant Editorial Headline */}
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-3xl text-left"
+          >
+            <div className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-[#8c827a] mb-4 font-helvetica">
+              <Heart className="w-3.5 h-3.5 text-[#d97757] fill-[#d97757]" />
+              <span>Bespoke Weddings & Monumental Celebrations</span>
+            </div>
 
-          <h1 className="font-davinci text-5xl sm:text-6xl md:text-7xl lg:text-[88px] leading-[1.02] tracking-[-0.02em] font-normal text-[#1a1816]">
-            Celebrate love <br />
-            leave the stress to us.
-          </h1>
-        </motion.div>
+            <h1 className="font-davinci text-5xl sm:text-6xl md:text-7xl lg:text-[88px] leading-[1.02] tracking-[-0.02em] font-normal text-[#1a1816]">
+              Celebrate love <br />
+              leave the stress to us.
+            </h1>
+          </motion.div>
+
+          {/* Right: Narrow Supporting Editorial Block & Understated CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.85, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full lg:max-w-[360px] text-left lg:pb-3 flex flex-col items-start"
+          >
+            <p className="font-helvetica text-[15px] sm:text-[16px] leading-[1.65] text-[#59524c] mb-5 font-normal">
+              From intimate gatherings to unforgettable celebrations, we take care of every detail behind the scenes — so you can be fully present for the moments that matter.
+            </p>
+
+            <button
+              type="button"
+              onClick={onPlanEvent}
+              className="group inline-flex items-center gap-2 font-helvetica text-xs sm:text-[13px] font-medium tracking-[0.14em] uppercase text-[#1a1816] hover:text-[#d97757] transition-colors duration-200"
+            >
+              <span>Plan your celebration</span>
+              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
+            </button>
+          </motion.div>
+        </div>
       </div>
 
       {/* 2. Soft Ribbon Ticker Bar (Photography ✦ Venue Planning ✦ Catering & Menu...) */}
